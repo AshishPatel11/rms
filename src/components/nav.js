@@ -1,7 +1,7 @@
 function nav() {
     return (
         <div className="navBar">
-            <h1>Resource Management System</h1>
+            <h1 className="title">Resource Management System</h1>
         </div>
     );
 }

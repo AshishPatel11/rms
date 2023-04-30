@@ -1,11 +1,77 @@
-@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:regular,italic,700);
-*{
+@import url(https://fonts.googleapis.com/css?family=Yeseva+One:regular);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.navBar{
-    background-color: black;
-    color: white;
-    font-family: libre baskerville;
+
+body {
+    background-image: url("./images/brick-5066288.jpg");
+    background-size: cover;
+}
+
+.navBar {
+    color: rgb(29, 29, 29);
+    font-family: 'yeseva one';
+}
+.form-title {
+    font-family: 'yeseva one';
+}
+
+.input-fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.form-btn {
+    background-image: linear-gradient(92.88deg, #455EB5 9.16%, #5643CC 43.89%, #673FD7 64.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 500;
+    height: 3rem;
+    /* padding: 0 1.2rem; */
+    /* width: 100% ; */
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.form-btn:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+}
+
+.loginForm{
+    font-family: "Montserrat";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    }
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.form .input-fields {
+    padding: 48px;
+}
+.form-text{
+    width: 100%;
+    padding: 12px 4px;
+    border: none;
+    border: 2px solid #5d3ecc;
+    border-radius: 8px;
+    background-color: transparent;
+    color: rgb(29, 29, 29);
 }
