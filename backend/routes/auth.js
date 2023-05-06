@@ -1,12 +1,18 @@
-/* eslint-disable no-undef */
 const express = require('express');
 const router = express.Router();
+const User = require('../models/User');
+// const { query, validationResult } = require('express-validator');
 
-router.get('/', (req, res) => {
-    obj = {
-        a: 'this',
-        number: 34
+router.post('/login', async (req, res) => {
+    const { userName } = req.body;
+    try {
+        let user = User.finfOne({ userName })
+        if (!user) {
+            return res.send(400).json({error: "user not found"})
+        }
+        res.send("hello");
+    } catch (error) {
+
     }
-    res.json(obj)
 })
 module.exports = router
