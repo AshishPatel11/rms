@@ -3,21 +3,20 @@ const router = express.Router();
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'ashishpatel';
-let rand = function () {
-    return Math.random().toString(36).substr(2); // remove `0.`
-};
-let token = function () {
-    return rand() + rand() + rand(); // to make it longer
-};
+// let rand = function () {
+//     return Math.random().toString(36).substr(2); // remove `0.`
+// };
+// let token = function () {
+//     return rand() + rand() + rand(); // to make it longer
+// };
 
-token();
-// const { query, validationResult } = require('express-validator');
+// token();
 router.post('/login', async (req, res) => {
     const { userName } = req.body;
     try {
-        let user = await User.findOne({ userName: userName })
+        let user = await User.findOne({ username: userName })
         if (!user) {
-            return res.send(400).json({ error: "user not found" })
+            return res.json({ error: "user not found" })
         }
         const data = {
             user: {
