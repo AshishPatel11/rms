@@ -23,15 +23,17 @@ router.post('/login', async (req, res) => {
         let testAccount = await nodemailer.createTestAccount();
         // connecting to SMTP Server
         let transporter = nodemailer.createTransport({
-            host: "smtp.ethereal.email",
-            port: 587,
+            service: 'gmail',
+            host:"smtp.gmail.com",
+            port:587,
+            secure:false,
             auth: {
-                user: 'janiya.armstrong@ethereal.email',
-                pass: '6GYJFAXNdHP2rNXjJu',
+                user: 'ashishpatel287680@gmail.com',
+                pass: 'elxzerajexrjvreb',
             },
         });
         let info = await transporter.sendMail({
-            from: '"Ashish Patel" <janiya.armstrong@ethereal.email>', // sender address
+            from: '"Ashish Patel" <ashishpatel287680@gmail.com>', // sender address
             to: "ashishcoc1105@gmail.com", // list of receivers
             subject: "Hello dixit", // Subject line
             text: "Hello world hahahahaha", // plain text body
