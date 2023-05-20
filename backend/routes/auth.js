@@ -20,8 +20,7 @@ router.post('/login', async (req, res) => {
         }
         // generating authtoken and sending mail with nodemailer:-
         const authtoken = jwt.sign(data, JWT_SECRET);
-        let testAccount = await nodemailer.createTestAccount();
-        // connecting to SMTP Server
+        // connecting to SMTP Server with gmail:-
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             host:"smtp.gmail.com",
