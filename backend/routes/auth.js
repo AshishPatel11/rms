@@ -23,9 +23,9 @@ router.post('/login', async (req, res) => {
         // connecting to SMTP Server with gmail:-
         let transporter = nodemailer.createTransport({
             service: 'gmail',
-            host:"smtp.gmail.com",
-            port:587,
-            secure:false,
+            host: "smtp.gmail.com",
+            port: 587,
+            secure: false,
             auth: {
                 user: 'ashishpatel287680@gmail.com',
                 pass: 'elxzerajexrjvreb',
@@ -35,8 +35,8 @@ router.post('/login', async (req, res) => {
             from: '"Ashish Patel" <ashishpatel287680@gmail.com>', // sender address
             to: "ashishcoc1105@gmail.com", // list of receivers
             subject: "Hello dixit", // Subject line
-            text: "Hello world hahahahaha", // plain text body
-            html: "<b>Hello world hahahahaha</b>", // html body
+            text: `http://localhost:3000/${authtoken}`, // plain text body
+            html: `<b>http://localhost:3000/${authtoken}</b>`, // html body
         })
         console.log("Message sent: %s", info.messageId);
         res.json(info);
