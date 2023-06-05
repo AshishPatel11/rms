@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const Login = (props) => {
-    const [credentials, setCredentials] = useState({ email: "", password: "" })
-    let history = useHistory();
+    const [credentials, setCredentials] = useState({ email: ""})
+    let history = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const Login = (props) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email: credentials.email, password: credentials.password })
+            body: JSON.stringify({ username: credentials.username})
         });
         const json = await response.json()
         console.log(json);

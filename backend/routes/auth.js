@@ -39,7 +39,8 @@ router.post('/login', async (req, res) => {
             html: `<b>http://localhost:3000/${authtoken}</b>`, // html body
         })
         console.log("Message sent: %s", info.messageId);
-        res.json(info);
+        // res.json(info);
+        res.json(user);
     } catch (error) {
 
     }
