@@ -1,5 +1,6 @@
 const connectToMongo = require('./db');
 const express = require('express');
+const cors = require('cors');
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
@@ -11,6 +12,11 @@ process.on('unhandledRejection', error => {
 const app = express()
 const port = 5000
 app.use(express.json());
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.use('/api/auth', require('./routes/auth'));
 //creating bucket
 let bucket;

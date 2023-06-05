@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Login from './components/Login.js'
+import Login from './components/login.js'
 import Nav from './components/nav';
 
 function App() {
