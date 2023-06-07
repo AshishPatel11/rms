@@ -9,7 +9,7 @@ const JWT_SECRET = 'ashishpatel';
 router.post('/login', async (req, res) => {
     const { userName } = req.body;
     try {
-        let user = await User.findOne({ username: userName })
+        let user = await User.findOne({ userName : userName })
         if (!user) {
             return res.status(400).json({ error: "user not found" })
         }
