@@ -2,9 +2,10 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const UserSchema = new Schema({
-    enrNo: {
+    uid: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     userName: {
         type: String,
@@ -13,6 +14,10 @@ const UserSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    tyep: {
+        type: String,
+        required: true
     }
 });
-module.exports = mongoose.model('users',UserSchema)
+module.exports = mongoose.model('users', UserSchema)

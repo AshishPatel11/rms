@@ -21,8 +21,8 @@ const Login = (props) => {
             console.log(json);
             // Save the auth token and redirect
             sessionStorage.setItem('user', JSON.stringify(json));
+            // const User = JSON.parse(sessionStorage.getItem("user"));
             history("/home");
-
         }
         else {
             alert(json.error);
@@ -34,7 +34,7 @@ const Login = (props) => {
     }
     return (
         <div className="loginForm">
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="form" method="post" onSubmit={handleSubmit}>
                 <div className="input-fields">
                     <span className="material-symbols-outlined">account_circle</span>
                     <input type="text" className="form-text" name='userName' id='userName' onChange={onChange} placeholder="Enter Username" />

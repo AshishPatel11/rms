@@ -2,7 +2,9 @@ import React from 'react'
 
 function adminDash() {
     return (
-        <div>adminDash</div>
+        <div>
+            
+        </div>
     )
 }
 
