@@ -75,6 +75,10 @@ body {
     padding: 48px;
 }
 
+.form .reg {
+    padding: 10px;
+}
+
 .form-text {
     width: 100%;
     padding: 16px 4px;

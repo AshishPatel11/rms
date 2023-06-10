@@ -1,6 +1,5 @@
 const connectToMongo = require('./db');
 const express = require('express');
-const cors = require('cors');
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
@@ -18,7 +17,9 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/auth', require('./routes/adduser'));
 //creating bucket
+// eslint-disable-next-line no-unused-vars
 let bucket;
 mongoose.connection.on("connected", () => {
     var db = mongoose.connections[0].db;
