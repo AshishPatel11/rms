@@ -3,10 +3,6 @@ import { useNavigate } from 'react-router-dom'
 const Home = (props) => {
     const [credentials, setCredentials] = useState({ OTP: "" })
     let navigate = useNavigate();
-    if (!sessionStorage.getItem('user')) {
-        alert('Please login!');
-        window.location.replace("http://localhost:3000");
-    }
     const auth = async () => {
         if (sessionStorage.getItem('user')) {
             const User = await JSON.parse(sessionStorage.getItem("user"));
