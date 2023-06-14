@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import Loginauth from '../loginauth'
 const AddUser = (props) => {
     var user = {
         uid: "",
@@ -42,8 +42,9 @@ const AddUser = (props) => {
     }
     return (
         <>
+            <Loginauth />
             <div className="loginForm">
-                <form className="form" method="post" onSubmit={handleSubmit}>
+                <form className="form"metho d="post" onSubmit={handleSubmit}>
                     <div className="input-fields reg">
                         <input type="text" className="form-text" name='uid' value={credentials.uid} id='uid' onChange={onChange} required placeholder="Enter uid" />
                     </div>

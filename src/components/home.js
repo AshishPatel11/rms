@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Loginauth from './loginauth';
 const Home = (props) => {
     const [credentials, setCredentials] = useState({ OTP: "" })
     let navigate = useNavigate();
@@ -27,7 +28,7 @@ const Home = (props) => {
             alert("OTP Verified !!")
             auth();
         }
-        else{
+        else {
             alert("wrong OTP Entered !!")
         }
     }
@@ -35,15 +36,18 @@ const Home = (props) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div className="loginForm">
-            <form className="form" method="post" onSubmit={handleSubmit}>
-                <div className="input-fields">
-                    <span className="material-symbols-outlined">account_circle</span>
-                    <input type="number" className="form-text" name='OTP' id='OTP' value={credentials.OTP} onChange={onChange} placeholder="Enter OTP" />
-                </div>
-                <input type="submit" className="form-btn" value="Verify" />
-            </form>
-        </div>
+        <>
+            <Loginauth />
+            <div className="loginForm">
+                <form className="form" method="post" onSubmit={handleSubmit}>
+                    <div className="input-fields">
+                        <span className="material-symbols-outlined">account_circle</span>
+                        <input type="number" className="form-text" name='OTP' id='OTP' value={credentials.OTP} onChange={onChange} placeholder="Enter OTP" />
+                    </div>
+                    <input type="submit" className="form-btn" value="Verify" />
+                </form>
+            </div>
+        </>
     )
 }
 export default Home
