@@ -8,7 +8,7 @@ import Login from '../components/login.js'
 import Home from '../components/home';
 import AdminDash from '../components/admin/adminDash.js'
 import StudentDash from '../components/student/StudentDash.js'
-import AddUser from '../components/admin/addUser.js'
+import AddUser from './admin/AddUser.js'
 import AddCourse from '../components/admin/AddCourse.js'
 function Routesdef(props) {
     return (
@@ -20,7 +20,6 @@ function Routesdef(props) {
                 <Route path="home/studentDash" element={<StudentDash />} />
                 <Route path="home/adminDash/addUser" element={<AddUser />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
-                <Route path={`home/studentDash/${props.courseName}`} Component={props.courseName} />
             </Routes>
         </Router>
     )

@@ -17,13 +17,12 @@ const UserSchema = new Schema({
         required: true,
         unique: true
     },
-    password: {
-        type: String,
-        required: true
-    },
     type: {
         type: String,
         required: true
+    },
+    courseid: {
+        type: String
     }
 });
 module.exports = mongoose.model('users', UserSchema)

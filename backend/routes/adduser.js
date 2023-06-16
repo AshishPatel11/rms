@@ -6,7 +6,6 @@ const { body, validationResult } = require('express-validator');
 router.post('/adduser', [
     body('userName', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
-    body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -24,7 +23,6 @@ router.post('/adduser', [
             uid: req.body.uid,
             userName: req.body.userName,
             email: req.body.email,
-            password: req.body.password,
             type: req.body.type,
         });
         res.json(user)

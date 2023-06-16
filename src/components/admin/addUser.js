@@ -21,7 +21,6 @@ const AddUser = (props) => {
                 uid: credentials.uid,
                 userName: credentials.userName,
                 email: credentials.email,
-                password: credentials.password,
                 type: credentials.type
             })
         });
@@ -44,7 +43,7 @@ const AddUser = (props) => {
         <>
             <Loginauth />
             <div className="loginForm">
-                <form className="form"metho d="post" onSubmit={handleSubmit}>
+                <form className="form" metho d="post" onSubmit={handleSubmit}>
                     <div className="input-fields reg">
                         <input type="text" className="form-text" name='uid' value={credentials.uid} id='uid' onChange={onChange} required placeholder="Enter uid" />
                     </div>
@@ -53,9 +52,6 @@ const AddUser = (props) => {
                     </div>
                     <div className="input-fields reg">
                         <input type="text" className="form-text" name='email' value={credentials.email} id='email' onChange={onChange} required placeholder="Enter email" />
-                    </div>
-                    <div className="input-fields reg">
-                        <input type="text" className="form-text" name='password' value={credentials.password} id='password' onChange={onChange} required placeholder="Enter password" />
                     </div>
                     <div className="input-fields reg">
                         <input type="text" className="form-text" name='type' value={credentials.type} id='type' onChange={onChange} required placeholder="Enter user type" />
