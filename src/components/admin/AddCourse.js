@@ -37,7 +37,7 @@ function AddCourse() {
     }
     return (
         <>
-            <Loginauth />
+            <Loginauth type="admin" />
             <h2>Create Course</h2>
             <form method="post" onSubmit={handleSubmit}>
                 <label for='courseName'>Course Name:-</label>

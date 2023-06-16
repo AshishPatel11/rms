@@ -8,13 +8,13 @@ const Home = (props) => {
         if (sessionStorage.getItem('user')) {
             const User = await JSON.parse(sessionStorage.getItem("user"));
             if (User.type === "admin") {
-                navigate("/home/adminDash")
+                navigate("/home/adminDash", { replace: true })
             }
             else if (User.type === "student") {
-                navigate("home/studentDash")
+                navigate("/home/studentDash", { replace: true })
             }
             else if (User.type === "teacher") {
-                navigate("/home/teacherDash")
+                navigate("/home/teacherDash", { replace: true })
             }
             else {
                 navigate("/404", { replace: true })

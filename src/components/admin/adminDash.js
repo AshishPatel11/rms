@@ -4,7 +4,7 @@ import Loginauth from '../loginauth'
 function adminDash() {
     return (
         <>
-            <Loginauth />
+            <Loginauth type="admin" />
             <div className='card-container'>
                 <div className='option-card'>
                     <p><Link to="addUser">Add User</Link></p>
