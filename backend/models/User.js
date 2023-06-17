@@ -9,20 +9,19 @@ const UserSchema = new Schema({
     },
     userName: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     email: {
         type: String,
-        required: true,
-        unique: true
+        required: true
     },
     type: {
         type: String,
         required: true
     },
-    courseid: {
+    cid: {
         type: String
     }
+
 });
 module.exports = mongoose.model('users', UserSchema)

@@ -36,7 +36,7 @@ const Login = (props) => {
             <form className="form" method="post" onSubmit={handleSubmit}>
                 <div className="input-fields">
                     <span className="material-symbols-outlined">account_circle</span>
-                    <input type="email" className="form-text" name='email' autoComplete='off' id='email' value={credentials.email} onChange={onChange} placeholder="Enter Your Email" />
+                    <input type="email" className="form-text" name='email' autoComplete='on' id='email' value={credentials.email} onChange={onChange} placeholder="Enter Your Email" />
                 </div>
                 <input type="submit" className="form-btn" value="Verify" />
             </form>

@@ -15,6 +15,7 @@ function AddCourse() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                cid: credentials.courseName.concat(" ", credentials.courseDura),
                 courseName: credentials.courseName,
                 courseDura: credentials.courseDura,
                 sem: credentials.sem
@@ -40,15 +41,15 @@ function AddCourse() {
             <Loginauth type="admin" />
             <h2>Create Course</h2>
             <form method="post" onSubmit={handleSubmit}>
-                <label for='courseName'>Course Name:-</label>
+                <label htmlFor='courseName'>Course Name:-</label>
                 <input type="text" name='courseName' id='courseName' value={credentials.courseName} onChange={onChange} required placeholder='Name of Course' />
 
 
-                <label for='courseDura'>Course Year:-</label>
+                <label htmlFor='courseDura'>Course Year:-</label>
                 <input type="text" name='courseDura' id='courseDura' value={credentials.courseDura} onChange={onChange} required placeholder='Year duration of Course' />
 
 
-                <label for='sem'>Total Semester:-</label>
+                <label htmlFor='sem'>Total Semester:-</label>
                 <input type="number" name='sem' id='sem' value={credentials.sem} onChange={onChange} required placeholder='No. of semester' />
 
                 <input type='submit' name='submit' />

@@ -12,6 +12,7 @@ import AddUser from '../components/admin/AddUser.js'
 import AddCourse from '../components/admin/AddCourse.js'
 import MyCourse from '../components/student/MyCourse.js'
 import JoinCourse from '../components/student/JoinCourse.js'
+import ApprReq from '../components/admin/ApprReq.js'
 import P404 from './P404.js'
 function Routesdef(props) {
     return (
@@ -21,6 +22,7 @@ function Routesdef(props) {
                 <Route path="home" element={<Home />} />
                 <Route path="home/adminDash" element={<AdminDash />} />
                 <Route path="home/adminDash/addUser" element={<AddUser />} />
+                <Route path="home/adminDash/apprReq" element={<ApprReq />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
                 <Route path="home/studentDash" element={<StudentDash />} />
                 <Route path="home/studentDash/myCourse" element={<MyCourse />} />

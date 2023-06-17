@@ -20,6 +20,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/auth', require('./routes/adduser'));
 app.use('/api/auth', require('./routes/addCourse'));
 app.use('/api/auth', require('./routes/fetchCourse'));
+app.use('/api/auth', require('./routes/joinReq'));
 //creating bucket
 // eslint-disable-next-line no-unused-vars
 let bucket;

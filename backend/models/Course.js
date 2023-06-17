@@ -2,6 +2,10 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
 const CourseSchema = new Schema({
+    cid: {
+        type: String,
+        required: true
+    },
     courseName: {
         type: String,
         required: true,
