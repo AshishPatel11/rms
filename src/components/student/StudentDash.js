@@ -5,15 +5,13 @@ import Loginauth from '../loginauth'
 function StudentDash() {
     return (
         <>
-            <>
-                <Loginauth type="student"/>
-                <div className='card-container'>
-                    <div className='option-card'>
-                        <p><Link to="myCourse">My User</Link></p>
-                        <p><Link to="joinCourse">Join Course</Link></p>
-                    </div>
+            <Loginauth type="student" />
+            <div className='card-container'>
+                <div className='option-card'>
+                    <p><Link to="myCourse">My Course</Link></p>
+                    <p><Link to="joinCourse">Join Course</Link></p>
                 </div>
-            </>
+            </div>
         </>
     )
 }
