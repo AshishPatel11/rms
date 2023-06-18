@@ -1,14 +1,13 @@
 import React from 'react'
-import ShowCourse from '../student/ShowCourse'
 import { Link } from "react-router-dom";
-import Loginauth from '../loginauth'
+import Loginauth from '../loginauth.js'
 function MyCourse() {
     <Loginauth type="student" />
     const User = JSON.parse(sessionStorage.getItem("user"));
     if (User.cid) {
         return (
             <>
-                <ShowCourse cName={User.cid} />
+                <p><Link to="showCourse ">{User.cid}</Link></p>
             </>
         )
     }

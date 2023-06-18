@@ -15,7 +15,9 @@ function JoinCourse() {
     }
     getCourses();
     const courses = JSON.parse(sessionStorage.getItem("courses"));
-    // console.log(courses);
+    if (courses.error) {
+        alert(courses.error)
+    }
     let courseNames = []
     for (let i = 0; i < courses.length; i++) {
         courseNames.push(courses[i].cid);
@@ -61,7 +63,7 @@ function JoinCourse() {
     }
     return (
         <>
-            <Loginauth type="student" />
+            <Loginauth />
             <div className="loginForm" >
                 <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="input-fields">
