@@ -10,6 +10,7 @@ function adminDash() {
                     <p><Link to="addUser">Add User</Link></p>
                     <p><Link to="AddCourse">Add Course</Link></p>
                     <p><Link to="AddSem">Create Semester</Link></p>
+                    <p><Link to="AddSub">Create Subjects</Link></p>
                     <p><Link to="apprReq">Pending approvals</Link></p>
                 </div>
             </div>

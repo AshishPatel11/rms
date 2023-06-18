@@ -43,7 +43,7 @@ const AddUser = (props) => {
         <>
             <Loginauth />
             <div className="loginForm">
-                <form className="form" metho d="post" onSubmit={handleSubmit}>
+                <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="input-fields reg">
                         <input type="text" className="form-text" name='uid' value={credentials.uid} id='uid' onChange={onChange} required placeholder="Enter uid" />
                     </div>

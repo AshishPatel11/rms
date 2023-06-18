@@ -9,12 +9,14 @@ import Home from '../components/home';
 import AdminDash from '../components/admin/AdminDash.js'
 import StudentDash from '../components/student/StudentDash.js'
 import AddSem from '../components/admin/AddSem.js'
+import AddSub from '../components/admin/AddSub.js'
 import AddUser from '../components/admin/AddUser.js'
 import AddCourse from '../components/admin/AddCourse.js'
 import MyCourse from '../components/student/MyCourse.js'
 import JoinCourse from '../components/student/JoinCourse.js'
 import ApprReq from '../components/admin/ApprReq.js'
 import ShowCourse from '../components/student/ShowCourse.js'
+import ShowCoursePro from '../components/professor/ShowCourse.js'
 import TeacherDash from '../components/professor/TeacherDash.js'
 import P404 from './P404.js'
 function Routesdef(props) {
@@ -28,10 +30,12 @@ function Routesdef(props) {
                 <Route path="home/adminDash/apprReq" element={<ApprReq />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
                 <Route path="home/adminDash/AddSem" Component={AddSem} />
+                <Route path="home/adminDash/AddSub" Component={AddSub} />
                 <Route path="home/studentDash" element={<StudentDash />} />
                 <Route path="home/studentDash/myCourse" element={<MyCourse />} />
                 <Route path="home/studentDash/joinCourse" element={<JoinCourse />} />
-                <Route path="home/studentDash/myCourse/showCourse" element={<ShowCourse/>} />
+                <Route path="home/studentDash/myCourse/showCourse" element={<ShowCourse />} />
+                <Route path="home/teacherDash/myCourse/showCourse" element={<ShowCoursePro />} />
                 <Route path="home/teacherDash" element={<TeacherDash />} />
                 <Route path="home/teacherDash/myCourse" element={<MyCourse />} />
                 <Route path="home/teacherDash/joinCourse" element={<JoinCourse />} />

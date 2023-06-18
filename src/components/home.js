@@ -24,6 +24,7 @@ const Home = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const OTP = await JSON.parse(sessionStorage.getItem("OTP"));
+        console.log(OTP)
         if (credentials.OTP === OTP) {
             alert("OTP Verified !!")
             auth();

@@ -20,7 +20,6 @@ function ShowCourse(props) {
     }
     myAsyncFunction();
     const Mysemarray = JSON.parse(sessionStorage.getItem("Mycourses"))
-    console.log(Mysemarray)
     const [isRendered, setIsRendered] = useState({ state: false, semName: "" });
     let showsemdetail = async (e) => {
         setIsRendered({ state: true, semName: e.target.id });
@@ -33,7 +32,7 @@ function ShowCourse(props) {
     })
     return (
         <>
-            <Loginauth />
+            <Loginauth type="teacher" />
             {semList}
             {isRendered.state && <ShowSem sem={isRendered.semName} />}
         </>
