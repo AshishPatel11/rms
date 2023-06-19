@@ -18,10 +18,11 @@ function JoinCourse() {
     }
     getAppr();
     const approvals = JSON.parse(sessionStorage.getItem("approvals"));
-    // console.log(courses);
     let pendingAppr = []
-    for (let i = 0; i < approvals.length; i++) {
-        pendingAppr.push(approvals[i]);
+    if (approvals) {
+        for (let i = 0; i < approvals.length; i++) {
+            pendingAppr.push(approvals[i]);
+        }
     }
     const [credentials, setCredentials] = useState(pendingAppr)
 

@@ -52,16 +52,19 @@ function AddSub() {
         const json = await response.json()
         sessionStorage.setItem('courses', JSON.stringify(json));
     }
-    getCourses();
-
-
-    const courses = JSON.parse(sessionStorage.getItem("courses"));
-    if (courses.error) {
+    const myAsync = async () => {
+        await getCourses();
+    }
+    myAsync();
+    const courses = JSON.parse(sessionStorage.getItem("courses"))
+    if (courses && courses.error) {
         alert(courses.error)
     }
     let courseNames = []
-    for (let i = 0; i < courses.length; i++) {
-        courseNames.push(courses[i].cid);
+    if (courses) {
+        for (let i = 0; i < courses.length; i++) {
+            courseNames.push(courses[i].cid);
+        }
     }
     let courseList = courseNames.map((item, index) => {
         return <option key={index} value={item}>{item}</option>
