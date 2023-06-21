@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Loginauth from '../loginauth'
 function JoinCourse() {
+    const [courses, setCourses] = useState([])
     const getCourses = async (e) => {
         // e.preventDefault();
         const response = await fetch("http://localhost:5000/api/auth/fetchCourse", {
@@ -11,13 +12,19 @@ function JoinCourse() {
             body: JSON.stringify()
         });
         const json = await response.json()
-        sessionStorage.setItem('courses', JSON.stringify(json));
+        return json
     }
-    getCourses();
-    const courses = JSON.parse(sessionStorage.getItem("courses"));
-    if (courses.error) {
-        alert(courses.error)
-    }
+    useEffect(() => {
+        async function getCoursesAsync() {
+            try {
+                const json = await getCourses();
+                setCourses(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getCoursesAsync();
+    }, [])
     let courseNames = []
     for (let i = 0; i < courses.length; i++) {
         courseNames.push(courses[i].cid);
@@ -68,6 +75,7 @@ function JoinCourse() {
                 <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="input-fields">
                         <select name="Course" onChange={onChange} value={credentials}>
+                            <option hidden>select course</option>
                             {itemList}
                         </select>
                     </div>

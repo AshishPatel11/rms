@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Loginauth from '../loginauth'
 function AddSub() {
     var course = {
@@ -8,6 +8,8 @@ function AddSub() {
         subcode: ""
     };
     const [credentials, setCredentials] = useState(course)
+
+    const [courses, setCourses] = useState([])
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await fetch("http://localhost:5000/api/auth/addSub", {
@@ -50,21 +52,35 @@ function AddSub() {
             body: JSON.stringify()
         });
         const json = await response.json()
-        sessionStorage.setItem('courses', JSON.stringify(json));
+        if (json.error) {
+            alert(json.error)
+        }
+        return json
     }
-    const myAsync = async () => {
-        await getCourses();
-    }
-    myAsync();
-    const courses = JSON.parse(sessionStorage.getItem("courses"))
-    if (courses && courses.error) {
-        alert(courses.error)
+
+
+    useEffect(() => {
+        async function getCoursesAsync() {
+            try {
+                const json = await getCourses();
+                setCourses(json)
+                console.log(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getCoursesAsync();
+    }, [])
+    if (courses.error) {
+        return (
+            <>
+                <h1>There are No Semester or Courses Created</h1>
+            </>
+        )
     }
     let courseNames = []
-    if (courses) {
-        for (let i = 0; i < courses.length; i++) {
-            courseNames.push(courses[i].cid);
-        }
+    for (let i = 0; i < courses.length; i++) {
+        courseNames.push(courses[i].cid);
     }
     let courseList = courseNames.map((item, index) => {
         return <option key={index} value={item}>{item}</option>

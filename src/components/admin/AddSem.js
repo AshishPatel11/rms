@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Loginauth from '../loginauth'
 function AddSem() {
     var course = {
@@ -6,6 +6,7 @@ function AddSem() {
         semName: "",
         sub: ""
     };
+    const [courses, setCourses] = useState([])
     const [credentials, setCredentials] = useState(course)
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -41,7 +42,6 @@ function AddSem() {
 
     //fetching the courses
     const getCourses = async (e) => {
-        // e.preventDefault();
         const response = await fetch("http://localhost:5000/api/auth/fetchCourse", {
             method: 'POST',
             headers: {
@@ -50,14 +50,28 @@ function AddSem() {
             body: JSON.stringify()
         });
         const json = await response.json()
-        sessionStorage.setItem('courses', JSON.stringify(json));
+        if (json.error) {
+            alert(json.error)
+        }
+        return json;
     }
-    getCourses();
-
-
-    const courses = JSON.parse(sessionStorage.getItem("courses"));
+    useEffect(() => {
+        async function getCoursesAsync() {
+            try {
+                const json = await getCourses();
+                setCourses(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getCoursesAsync();
+    }, [])
     if (courses.error) {
-        alert(courses.error)
+        return (
+            <>
+                <h1>No Semester</h1>
+            </>
+        )
     }
     let courseNames = []
     for (let i = 0; i < courses.length; i++) {

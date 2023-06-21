@@ -7,7 +7,7 @@ function MyCourse() {
     if (User.cid) {
         return (
             <>
-                <p><Link to="showCourse ">{User.cid}</Link></p>
+                <p><Link to="showCourse">{User.cid}</Link></p>
             </>
         )
     }

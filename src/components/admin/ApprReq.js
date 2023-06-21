@@ -51,6 +51,7 @@ function JoinCourse() {
             });
             const json = await response.json()
             console.log(json)
+            // navigate("?");
             alert(json.msg)
         }
 
@@ -71,6 +72,7 @@ function JoinCourse() {
             console.log(json)
             alert(json.msg)
         }
+
     }
 
     let formList = pendingAppr.map((item, index) => {

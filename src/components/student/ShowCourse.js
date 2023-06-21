@@ -5,7 +5,7 @@ import ShowSem from './ShowSem';
 const ShowCourse = (props) => {
     const User = JSON.parse(sessionStorage.getItem('user'));
     const [isRendered, setIsRendered] = useState({ state: false, semName: '' });
-
+    const [Mysemarray, setMysemarray] = useState([])
     const getCourses = async () => {
         try {
             const response = await fetch('http://localhost:5000/api/auth/fetchMyCourse', {
@@ -20,7 +20,7 @@ const ShowCourse = (props) => {
                 alert(json.error);
                 return;
             }
-            sessionStorage.setItem('Mycourses', JSON.stringify(json));
+            return json;
         } catch (error) {
             console.log('Error fetching courses:', error);
         }
@@ -30,26 +30,35 @@ const ShowCourse = (props) => {
         setIsRendered({ state: true, semName: e.target.id });
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            await getCourses();
-        };
 
-        fetchData();
+    useEffect(() => {
+        async function getCoursesAsync() {
+            try {
+                const json = await getCourses();
+                setMysemarray(json)
+                console.log(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getCoursesAsync();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    useEffect(() => {
-        console.log(isRendered);
-    }, [isRendered]);
     let semList;
-    let Mysemarray = [];
-
-    semList = Mysemarray.map((item, index) => (
-        <p key={index} onClick={showsemdetail} id={item.semName}>
-            {item.semName}
-        </p>
-    ));
+    if (Mysemarray) {
+        semList = Mysemarray.map((item, index) => (
+            <p key={index} onClick={showsemdetail} id={item.semName}>
+                {item.semName}
+            </p>
+        ));
+    }
+    else {
+        return (
+            <>
+                <h1>No Semester</h1>
+            </>
+        )
+    }
     console.log(semList)
     return (
         <>
