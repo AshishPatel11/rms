@@ -22,6 +22,7 @@ function AddSub() {
                 cid: credentials.cid,
                 subcode: credentials.subcode,
                 subName: credentials.subName,
+                semName: "sem".concat(" ", credentials.semName),
             })
         });
         const json = await response.json()

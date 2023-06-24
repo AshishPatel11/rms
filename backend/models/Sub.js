@@ -17,6 +17,10 @@ const SubSchema = new Schema({
     subName: {
         type: String,
         required: true
+    },
+    semName: {
+        type: String,
+        required: true
     }
 })
 module.exports = mongoose.model('Sub', SubSchema)

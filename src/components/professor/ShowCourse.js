@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Loginauth from '../loginauth';
 import ShowSem from './ShowSem';
-import { json } from 'react-router-dom';
 
 const ShowCourse = (props) => {
     const User = JSON.parse(sessionStorage.getItem('user'));
@@ -36,7 +35,6 @@ const ShowCourse = (props) => {
             try {
                 const json = await getCourses();
                 setMysemarray(json)
-                console.log(json)
             } catch (error) {
                 console.error(error);
             }
@@ -44,7 +42,7 @@ const ShowCourse = (props) => {
         getCoursesAsync();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    if (Mysemarray.error) {
+    if (Mysemarray && Mysemarray.error) {
         return (
             <>
                 <h1>there are no semester created by admin yet</h1>
@@ -58,7 +56,6 @@ const ShowCourse = (props) => {
             {item.semName}
         </p>
     ));
-    console.log(semList)
     return (
         <>
             <Loginauth type="teacher" />

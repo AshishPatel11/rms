@@ -16,11 +16,29 @@ router.post('/addSub', async (req, res) => {
             cid: req.body.cid,
             subcode: req.body.subcode,
             subName: req.body.subName,
+            semName: req.body.semName,
         });
         res.json(sub)
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");
+    }
+})
+
+
+
+router.post('/fetchSub', async (req, res) => {
+    try {
+        let sub = await Sub.find({ semName: req.body.semName })
+        if (sub.length === 0) {
+            return res.json({ error: "subjects not found" })
+        }
+        else {
+            return res.json(sub);
+        }
+    }
+    catch (error) {
+        console.log(error)
     }
 })
 module.exports = router
