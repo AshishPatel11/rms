@@ -36,7 +36,7 @@ function ShowSem(props) {
     if (Subjects && Subjects.error) {
         return (
             <>
-                <h1>there are no semester created by admin yet</h1>
+                <h1>there are no subjects created by admin yet</h1>
             </>
         )
     }
@@ -44,7 +44,7 @@ function ShowSem(props) {
 
     subList = Subjects.map((item, index) => (
         <p key={index}>
-            <Link to="subjects" state={{ subName: item.subName }}>{item.subName}</Link>
+            <Link to="subjects" state={{ subName: item.subName, subcode: item.subcode }}>{item.subName}</Link>
         </p>
     ));
     return (

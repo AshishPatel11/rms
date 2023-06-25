@@ -20,6 +20,10 @@ import ShowCoursePro from '../components/professor/ShowCourse.js'
 import TeacherDash from '../components/professor/TeacherDash.js'
 import ShowSubs from '../components/professor/ShowSubs.js'
 import P404 from './P404.js'
+import AddFolder from './professor/AddFolder.js';
+import FolderData from './professor/FolderData.js';
+import ShowSubsSt from '../components/student/ShowSubs.js'
+import FolderDataSt from '../components/student/FolderData.js'
 function Routesdef(props) {
     return (
         <Router>
@@ -36,8 +40,12 @@ function Routesdef(props) {
                 <Route path="home/studentDash/myCourse" element={<MyCourse />} />
                 <Route path="home/studentDash/joinCourse" element={<JoinCourse />} />
                 <Route path="home/studentDash/myCourse/showCourse" element={<ShowCourse />} />
+                <Route path="home/studentDash/myCourse/showCourse/subjects" element={<ShowSubsSt />} />
+                <Route path="home/studentDash/myCourse/showCourse/subjects/folderData" element={<FolderDataSt />} />
                 <Route path="home/teacherDash/myCourse/showCourse" element={<ShowCoursePro />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects" element={<ShowSubs />} />
+                <Route path="home/teacherDash/myCourse/showCourse/subjects/folderData" element={<FolderData />} />
+                <Route path="home/teacherDash/myCourse/showCourse/subjects/AddFolder" element={<AddFolder />} />
                 <Route path="home/teacherDash" element={<TeacherDash />} />
                 <Route path="home/teacherDash/myCourse" element={<MyCourse />} />
                 <Route path="home/teacherDash/joinCourse" element={<JoinCourse />} />

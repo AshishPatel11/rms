@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import Loginauth from '../loginauth';
+import Loginauth from '../loginauth'
 function ShowSubs() {
     let { state } = useLocation();
     const [Myfolder, setMyfolder] = useState([])
@@ -45,8 +45,7 @@ function ShowSubs() {
     }
     return (
         <>
-            <Loginauth type="teacher" />
-            <Link to="AddFolder" state={state}>Create Folder</Link>
+            <Loginauth type="student" />
             {folderList}
         </>
     )
