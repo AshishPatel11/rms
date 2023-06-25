@@ -24,16 +24,15 @@ app.use('/api/auth', require('./routes/joinReq'));
 app.use('/api/auth', require('./routes/addSem'));
 app.use('/api/auth', require('./routes/addSub'));
 app.use('/api/auth', require('./routes/folders'));
-// app.use('/api/auth', require('./routes/files'));
-//creating bucket
+app.use('/api/auth', require('./routes/files'));
 // eslint-disable-next-line no-unused-vars
-let bucket;
-mongoose.connection.on("connected", () => {
-    var db = mongoose.connections[0].db;
-    bucket = new mongoose.mongo.GridFSBucket(db, {
-        bucketName: "MCA.DS"
-    });
-});
+// let bucket;
+// mongoose.connection.on("connected", () => {
+//     var db = mongoose.connections[0].db;
+//     bucket = new mongoose.mongo.GridFSBucket(db, {
+//         bucketName: "MCA.DS"
+//     });
+// });
 
 //to parse json content
 app.use(express.json());
@@ -48,20 +47,17 @@ const storage = new GridFsStorage({
             const filename = file.originalname;
             const fileInfo = {
                 filename: filename,
-                bucketName: "MCA.DS"
+                bucketName: "uploads"
             };
             resolve(fileInfo);
         });
     }
 });
 
-const upload = multer({
-    storage
-});
+const upload = multer({ storage });
 
 app.post("/upload", upload.single("file"), (req, res) => {
-    res.status(200)
-        .send("File uploaded successfully");
+    res.status(200).send(req.file);
 });
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)

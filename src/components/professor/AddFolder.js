@@ -15,7 +15,7 @@ function AddFolder() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                fid: credentials.folderName.concat(" ", state.subcode),
+                fid: credentials.folderName.concat("-", state.subcode),
                 folderName: credentials.folderName,
                 subcode: state.subcode,
                 subName: state.subName
