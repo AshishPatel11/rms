@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const FiledataSchema = new Schema({
     fileid: {
-        type: Object,
+        type: String,
         required: true
     },
     fileName: {

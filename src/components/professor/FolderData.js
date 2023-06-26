@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useState, useEffect, useCallback } from 'react'
+import { useLocation, Link } from 'react-router-dom'
 import Loginauth from '../loginauth'
 function FolderData() {
     let { state } = useLocation()
-    // var folder = {
-    //     folderName: ""
-    // };
-    // const [credentials, setCredentials] = useState(folder)
+    const [files, setFiles] = useState([])
+    const [refresh, setRefresh] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -16,7 +14,7 @@ function FolderData() {
             body: formData
         });
         const json = await response.json()
-        console.log(json.id)
+        console.log(json)
         if (json.id) {
             const response2 = await fetch("http://localhost:5000/api/auth/filedata",
                 {
@@ -26,7 +24,7 @@ function FolderData() {
                     },
                     body: JSON.stringify({
                         fileid: json.id,
-                        fileName: json.fileName,
+                        fileName: json.filename,
                         subcode: state.subcode,
                         fid: state.fid
                     })
@@ -36,9 +34,48 @@ function FolderData() {
                 alert("file uploaded successfully")
             }
         }
-
+        setRefresh(prevRefresh => !prevRefresh);
+    };
+    const getfiles = useCallback(async () => {
+        try {
+            const response = await fetch('http://localhost:5000/api/auth/fetchfiledata', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ subcode: state.subcode }),
+            });
+            const json = await response.json();
+            if (json.error) {
+                alert(json.error);
+            }
+            return json;
+        } catch (error) {
+            console.log('Error fetching files:', error);
+        }
+    }, [state.subcode])
+    useEffect(() => {
+        async function getCoursesAsync() {
+            try {
+                const json = await getfiles();
+                setFiles(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getCoursesAsync();
+    }, [getfiles]);
+    let folderList;
+    console.log(files)
+    if (files[0]) {
+        folderList = files.map((item, index) => (
+            <p key={index}>
+                <Link to="download" state={item}>
+                    {item.fileName}
+                </Link>
+            </p >
+        ));
     }
-
     return (
         <>
             <Loginauth type="teacher" />
@@ -48,6 +85,8 @@ function FolderData() {
                 <input type="file" name='file' id='file' required />
                 <input type='submit' name='submit' />
             </form>
+            <div>{folderList}</div>
+
         </>
     )
 }

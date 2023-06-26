@@ -19,6 +19,7 @@ import ShowCourse from '../components/student/ShowCourse.js'
 import ShowCoursePro from '../components/professor/ShowCourse.js'
 import TeacherDash from '../components/professor/TeacherDash.js'
 import ShowSubs from '../components/professor/ShowSubs.js'
+import DownloadFile from '../components/professor/DownloadFile.js'
 import P404 from './P404.js'
 import AddFolder from './professor/AddFolder.js';
 import FolderData from './professor/FolderData.js';
@@ -45,6 +46,7 @@ function Routesdef(props) {
                 <Route path="home/teacherDash/myCourse/showCourse" element={<ShowCoursePro />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects" element={<ShowSubs />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects/folderData" element={<FolderData />} />
+                <Route path="home/teacherDash/myCourse/showCourse/subjects/folderData/download" element={<DownloadFile />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects/AddFolder" element={<AddFolder />} />
                 <Route path="home/teacherDash" element={<TeacherDash />} />
                 <Route path="home/teacherDash/myCourse" element={<MyCourse />} />

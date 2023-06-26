@@ -18,4 +18,19 @@ router.post('/filedata', async (req, res) => {
     }
 })
 
+router.post('/fetchfiledata', async (req, res) => {
+    try {
+        let fileData = await Filesdata.find({ subcode: req.body.subcode })
+        if (fileData.length === 0) {
+            return res.json({ error: "files not found" })
+        }
+        else {
+            return res.json(fileData);
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
 module.exports = router
