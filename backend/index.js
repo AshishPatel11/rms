@@ -1,5 +1,4 @@
 const connectToMongo = require('./db');
-// const { gridBucket } = require('./db');
 const express = require('express');
 const mongoose = require("mongoose");
 const multer = require("multer");
@@ -8,10 +7,9 @@ const Grid = require("gridfs-stream")
 const methodOverride = require("method-override")
 const bodyParser = require("body-parser")
 
-
 require("dotenv").config();
 connectToMongo();
-const mongouri = 'mongodb://127.0.0.1/RMS2';
+const mongouri = 'mongodb://127.0.0.1/RMS';
 
 process.on('unhandledRejection', error => {
     console.log('unhandledRejection', error.message);
@@ -35,16 +33,6 @@ app.use('/api/auth', require('./routes/addSem'));
 app.use('/api/auth', require('./routes/addSub'));
 app.use('/api/auth', require('./routes/folders'));
 app.use('/api/auth', require('./routes/files'));
-const conn = mongoose.createConnection(mongouri);
-let gridBucket = conn.once("open", () => {
-
-    // gridBucket = Grid(conn.db, mongoose.mongo);
-    // gridBucket.collection("uploads");
-    const gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection('uploads');
-    gridBucket = gfs;
-    // return gridBucket;
-});
 //to parse json content
 app.use(express.json());
 app.use(express.urlencoded({
@@ -69,11 +57,19 @@ const upload = multer({ storage });
 app.post("/upload", upload.single("file"), (req, res) => {
     res.status(200).send(req.file);
 });
+Grid.mongo = mongoose.mongo;
+const conn = mongoose.createConnection(mongouri);
+let gfs;
+let gridBucket = conn.once("open", () => {
 
+    gfs = Grid(conn.db);
+    gfs.collection('uploads');
+    gridBucket = gfs;
+});
 
 app.get("/fileinfo/:filename", (req, res) => {
     try {
-        console.log(gridBucket)
+        console.log(gfs)
         const filename = req.params.filename;
         let file = gridBucket.files.find({ filename: filename }).toArray((err, result) => {
             if (err) {
@@ -84,11 +80,12 @@ app.get("/fileinfo/:filename", (req, res) => {
                     res.send({ msg: "file not found" })
                 }
                 else {
-                    // gridBucket.openDownloadStreamByName(filename).pipe(result)
+                    gridBucket.createReadStream(filename).pipe(result)
                     res.send({ msg: "ok" })
                 }
             }
         })
+        // console.log(file)
     }
     catch (error) {
         res.send(error.message)
