@@ -1,24 +1,25 @@
 const connectToMongo = require('./db');
+// const { gridBucket } = require('./db');
 const express = require('express');
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
+const Grid = require("gridfs-stream")
+const methodOverride = require("method-override")
+const bodyParser = require("body-parser")
+
+
 require("dotenv").config();
 connectToMongo();
-const mongouri = 'mongodb://127.0.0.1/RMS';
-try {
-    mongoose.connect(mongouri, {
-        useUnifiedTopology: true,
-        useNewUrlParser: true
-    });
-} catch (error) {
+const mongouri = 'mongodb://127.0.0.1/RMS2';
 
-}
 process.on('unhandledRejection', error => {
     console.log('unhandledRejection', error.message);
 });
 const app = express()
 const port = 5000
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
 app.use(express.json());
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -34,22 +35,23 @@ app.use('/api/auth', require('./routes/addSem'));
 app.use('/api/auth', require('./routes/addSub'));
 app.use('/api/auth', require('./routes/folders'));
 app.use('/api/auth', require('./routes/files'));
-// eslint-disable-next-line no-unused-vars
-let bucket;
-mongoose.connection.on("connected", () => {
-    var db = mongoose.connections[0].db;
-    bucket = new mongoose.mongo.GridFSBucket(db, {
-        bucketName: "uploads"
-    });
-});
+const conn = mongoose.createConnection(mongouri);
+let gridBucket = conn.once("open", () => {
 
+    // gridBucket = Grid(conn.db, mongoose.mongo);
+    // gridBucket.collection("uploads");
+    const gfs = Grid(conn.db, mongoose.mongo);
+    gfs.collection('uploads');
+    gridBucket = gfs;
+    // return gridBucket;
+});
 //to parse json content
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
 const storage = new GridFsStorage({
-    url: "mongodb://127.0.0.1/RMS",
+    url: mongouri,
     file: (req, file) => {
         return new Promise((resolve, reject) => {
             const filename = file.originalname;
@@ -64,20 +66,36 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-app.get("/fileinfo/:filename", (req, res) => {
-    bucket.find({ filename: req.params.filename }).toArray((err, files) => {
-        if (!files[0] || files.length === 0) {
-            return res.status(404)
-                .json({
-                    err: "no files exist"
-                });
-        }
-        bucket.openDownloadStreamByName(req.params.filename).pipe(res);
-    })
-});
 app.post("/upload", upload.single("file"), (req, res) => {
     res.status(200).send(req.file);
 });
+
+
+app.get("/fileinfo/:filename", (req, res) => {
+    try {
+        console.log(gridBucket)
+        const filename = req.params.filename;
+        let file = gridBucket.files.find({ filename: filename }).toArray((err, result) => {
+            if (err) {
+                res.send(err.message)
+            }
+            else {
+                if (!result || result.length === 0) {
+                    res.send({ msg: "file not found" })
+                }
+                else {
+                    // gridBucket.openDownloadStreamByName(filename).pipe(result)
+                    res.send({ msg: "ok" })
+                }
+            }
+        })
+    }
+    catch (error) {
+        res.send(error.message)
+    }
+})
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port http://localhost:${port}`)
 })
