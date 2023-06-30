@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import Nav from '../nav'
+import "../CSS/adminDash.css"
 import Loginauth from '../loginauth'
 const AddUser = (props) => {
     var user = {
@@ -42,21 +44,27 @@ const AddUser = (props) => {
     return (
         <>
             <Loginauth />
-            <div className="loginForm">
+            <Nav type="admin" />
+
+            <div className="loginForm adduser">
                 <form className="form" method="post" onSubmit={handleSubmit}>
-                    <div className="input-fields reg">
+                    <div className="form-fields reg">
+                        <label htmlFor='uid' >User ID:-</label>
                         <input type="text" className="form-text" name='uid' value={credentials.uid} id='uid' onChange={onChange} required placeholder="Enter uid" />
                     </div>
-                    <div className="input-fields reg">
+                    <div className="form-fields reg">
+                        <label htmlFor='userName' >User Name:-</label>
                         <input type="text" className="form-text" name='userName' value={credentials.userName} id='userName' onChange={onChange} required placeholder="Enter Username" />
                     </div>
-                    <div className="input-fields reg">
+                    <div className="form-fields reg">
+                        <label htmlFor='email' >Email ID:-</label>
                         <input type="text" className="form-text" name='email' value={credentials.email} id='email' onChange={onChange} required placeholder="Enter email" />
                     </div>
-                    <div className="input-fields reg">
+                    <div className="form-fields reg">
+                        <label htmlFor='type' >User Role:-</label>
                         <input type="text" className="form-text" name='type' value={credentials.type} id='type' onChange={onChange} required placeholder="Enter user type" />
                     </div>
-                    <input type="submit" className="form-btn" value="Verify" />
+                    <input type="submit" className="form-btn" value="Create" />
                 </form>
             </div>
         </>

@@ -20,7 +20,7 @@ router.post('/filedata', async (req, res) => {
 
 router.post('/fetchfiledata', async (req, res) => {
     try {
-        let fileData = await Filesdata.find({ subcode: req.body.subcode })
+        let fileData = await Filesdata.find({ subcode: req.body.subcode, fid: req.body.fid })
         if (fileData.length === 0) {
             return res.json({ error: "files not found" })
         }

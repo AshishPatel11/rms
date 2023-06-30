@@ -8,7 +8,8 @@
 }
 
 body {
-    background-image: url("./images/brick-5066288.jpg");
+    /* background-image: url("./images/brick-5066288.jpg"); */
+    background-image: url("./images/webBg.jpg");
     background-size: cover;
 }
 
@@ -33,24 +34,27 @@ body {
     box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
-    /* flex-shrink: 0; */
     font-family: "Montserrat";
     font-size: 16px;
     font-weight: 500;
     height: 3rem;
-    /* padding: 0 1.2rem; */
-    /* width: 100% ; */
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
     transition: all .5s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    transition-duration: .1s;
 }
 
 .form-btn:hover {
-    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 30px;
-    transition-duration: .1s;
+    box-shadow: 0 0 20px 10px rgba(87, 81, 136, 0.5);
+    background-image: linear-gradient(92.88deg, #5643CC 9.16%, #673FD7 43.89%, #455EB5 64.72%);
+}
+
+.form-btn:active {
+    box-shadow: 0 0 0 0px rgba(87, 81, 136, 0.5);
+
 }
 
 .loginForm {
@@ -60,15 +64,17 @@ body {
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 100px;
-    border: 3px solid rgb(0, 0, 0);
-    border-radius: 24px;
-    backdrop-filter: blur(50px);
-    box-shadow: inset 0 0 25px #b79673;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 10px 15px 10px rgb(0 0 0 / 15%);
+    background-color: rgba(255, 255, 255, 0.08);
+    /* max-height: 85vh; */
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    color: snow;
 }
 
 .form .input-fields {
@@ -83,13 +89,41 @@ body {
     width: 100%;
     padding: 16px 4px;
     border: none;
-    border: 2px solid #5d3ecc;
+    border: 2px solid #509fa9;
     border-radius: 8px;
     background-color: transparent;
-    color: rgb(29, 29, 29);
+    color: snow;
     outline: none;
 }
 
 .material-symbols-outlined {
     font-size: 42px;
+    color: #509fa9;
+}
+
+.form-fields {
+    margin: 10px 0px;
+}
+
+option {
+    color: black;
+}
+
+.formlist {
+    color: snow;
+}
+
+/* CSS */
+.approve {
+    background-color: rgb(81, 133, 255);
+    padding: 6px 18px;
+    color: snow;
+    border-radius: 12px;
+}
+
+.reject {
+    background-color: rgb(255, 133, 133);
+    padding: 6px 18px;
+    color: black;
+    border-radius: 12px;
 }

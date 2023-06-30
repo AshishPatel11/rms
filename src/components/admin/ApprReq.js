@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Nav from '../nav'
 import Loginauth from '../loginauth'
 function JoinCourse() {
     const getAppr = async (e) => {
@@ -88,14 +89,18 @@ function JoinCourse() {
             <input type="text" name='courseName' id={item.cid} value={item.cid} onChange={onChange} disabled required />
 
 
-            <button type="submit" name='Approve'>Approve</button>
-            <button type="submit" name='Reject'>Reject</button>
+            <button type="submit" className='approve' name='Approve'>Approve</button>
+            <button type="submit" className='reject' name='Reject'>Reject</button>
         </form>)
     })
     return (
         <>
+            <Nav type="admin" />
             <Loginauth type="admin" />
-            {formList}
+            <div className='formlist'>
+                {formList}
+            </div>
+
         </>
     )
 }

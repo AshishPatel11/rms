@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import Nav from './nav'
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "" })
@@ -32,15 +32,18 @@ const Login = (props) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
     return (
-        <div className="loginForm">
-            <form className="form" method="post" onSubmit={handleSubmit}>
-                <div className="input-fields">
-                    <span className="material-symbols-outlined">account_circle</span>
-                    <input type="email" className="form-text" name='email' autoComplete='on' id='email' value={credentials.email} onChange={onChange} placeholder="Enter Your Email" />
-                </div>
-                <input type="submit" className="form-btn" value="Verify" />
-            </form>
-        </div>
+        <>
+            <Nav type="default" />
+            <div className="loginForm">
+                <form className="form" method="post" onSubmit={handleSubmit}>
+                    <div className="input-fields">
+                        <span className="material-symbols-outlined">account_circle</span>
+                        <input type="email" className="form-text" name='email' autoComplete='on' id='email' value={credentials.email} onChange={onChange} placeholder="Enter Your Email" />
+                    </div>
+                    <input type="submit" className="form-btn" value="Verify" />
+                </form>
+            </div>
+        </>
     )
 }
 export default Login;

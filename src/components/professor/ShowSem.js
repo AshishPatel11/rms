@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Link } from "react-router-dom";
+import Nav from '../nav';
+import Loginauth from '../loginauth';
 
 
 function ShowSem(props) {
@@ -36,6 +38,7 @@ function ShowSem(props) {
     if (Subjects && Subjects.error) {
         return (
             <>
+                <Nav type="teacher" />
                 <h1>there are no subjects created by admin yet</h1>
             </>
         )
@@ -49,6 +52,8 @@ function ShowSem(props) {
     ));
     return (
         <>
+            <Loginauth type="teacher" />
+            <Nav type="teacher" />
             <h1>{props.sem}</h1>
             {subList}
         </>

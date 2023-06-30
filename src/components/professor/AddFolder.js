@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Loginauth from '../loginauth'
 import { useLocation } from 'react-router-dom'
+import Nav from '../nav';
 function AddFolder() {
     let { state } = useLocation();
     var folder = {
@@ -39,6 +40,7 @@ function AddFolder() {
     return (
         <>
             <Loginauth type="teacher" />
+            <Nav type="teacher" />
             <h2>Create Course</h2>
             <form method="post" onSubmit={handleSubmit}>
                 <label htmlFor='folderName'>folder Name:-</label>

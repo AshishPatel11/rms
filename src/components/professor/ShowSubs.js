@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Loginauth from '../loginauth';
+import Nav from '../nav';
 function ShowSubs() {
     let { state } = useLocation();
     const [Myfolder, setMyfolder] = useState([])
@@ -34,6 +35,16 @@ function ShowSubs() {
     }, []);
     let folderList;
     console.log(Myfolder)
+    if (Myfolder.error) {
+        return (
+            <>
+                <Loginauth type="teacher" />
+                <Nav type="teacher" />
+                <Link to="AddFolder" state={state}>Create Folder</Link>
+                <h1>Folders are not created yet</h1>
+            </>
+        )
+    }
     if (Myfolder[0]) {
         folderList = Myfolder.map((item, index) => (
             <p key={index}>
@@ -46,6 +57,7 @@ function ShowSubs() {
     return (
         <>
             <Loginauth type="teacher" />
+            <Nav type="teacher" />
             <Link to="AddFolder" state={state}>Create Folder</Link>
             {folderList}
         </>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Loginauth from '../loginauth';
 import ShowSem from './ShowSem';
+import Nav from '../nav';
 
 const ShowCourse = (props) => {
     const User = JSON.parse(sessionStorage.getItem('user'));
@@ -59,6 +60,7 @@ const ShowCourse = (props) => {
     return (
         <>
             <Loginauth type="teacher" />
+            <Nav type="teacher" />
             {semList}
             {isRendered.state && <ShowSem sem={isRendered.semName} />}
         </>

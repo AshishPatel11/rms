@@ -1,16 +1,22 @@
-const connectToMongo = require('./db');
+const { connectToMongo } = require('./db');
 const express = require('express');
 const mongoose = require("mongoose");
 const multer = require("multer");
 const { GridFsStorage } = require("multer-gridfs-storage");
-const Grid = require("gridfs-stream")
+// const Grid = require("gridfs-stream")
 const methodOverride = require("method-override")
-const bodyParser = require("body-parser")
-
+const bodyParser = require("body-parser");
+const { ObjectId } = require('bson');
 require("dotenv").config();
-connectToMongo();
+let gridBuck;
+connectToMongo()
+    .then((gridBucket) => {
+        gridBuck = gridBucket;
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 const mongouri = 'mongodb://127.0.0.1/RMS';
-
 process.on('unhandledRejection', error => {
     console.log('unhandledRejection', error.message);
 });
@@ -57,35 +63,11 @@ const upload = multer({ storage });
 app.post("/upload", upload.single("file"), (req, res) => {
     res.status(200).send(req.file);
 });
-Grid.mongo = mongoose.mongo;
-const conn = mongoose.createConnection(mongouri);
-let gfs;
-let gridBucket = conn.once("open", () => {
-
-    gfs = Grid(conn.db);
-    gfs.collection('uploads');
-    gridBucket = gfs;
-});
-
-app.get("/fileinfo/:filename", (req, res) => {
+app.get("/fileinfo/:filename", async (req, res) => {
     try {
-        console.log(gfs)
-        const filename = req.params.filename;
-        let file = gridBucket.files.find({ filename: filename }).toArray((err, result) => {
-            if (err) {
-                res.send(err.message)
-            }
-            else {
-                if (!result || result.length === 0) {
-                    res.send({ msg: "file not found" })
-                }
-                else {
-                    gridBucket.createReadStream(filename).pipe(result)
-                    res.send({ msg: "ok" })
-                }
-            }
-        })
-        // console.log(file)
+        const filename = new ObjectId(req.params.filename);
+        gridBuck.openDownloadStream(filename).pipe(res)
+
     }
     catch (error) {
         res.send(error.message)

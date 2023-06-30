@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Loginauth from '../loginauth'
+import Nav from '../nav'
 function AddCourse() {
     var course = {
         courseName: "",
@@ -39,21 +40,26 @@ function AddCourse() {
     return (
         <>
             <Loginauth type="admin" />
-            <h2>Create Course</h2>
-            <form method="post" onSubmit={handleSubmit}>
-                <label htmlFor='courseName'>Course Name:-</label>
-                <input type="text" name='courseName' id='courseName' value={credentials.courseName} onChange={onChange} required placeholder='Name of Course' />
+            <Nav type="admin" />
+            <h2 className='title'>Create Course</h2>
+            <div className="loginForm">
+                <form className="form" method="post" onSubmit={handleSubmit}>
+                    <div className='form-fields'>
+                        <label htmlFor='courseName'>Course Name:-</label>
+                        <input className="form-text" type="text" name='courseName' id='courseName' value={credentials.courseName} onChange={onChange} required placeholder='Name of Course' />
+                    </div>
+                    <div className='form-fields'>
+                        <label htmlFor='courseDura'>Course Year:-</label>
+                        <input className="form-text" type="text" name='courseDura' id='courseDura' value={credentials.courseDura} onChange={onChange} required placeholder='Year duration of Course' />
+                    </div>
 
-
-                <label htmlFor='courseDura'>Course Year:-</label>
-                <input type="text" name='courseDura' id='courseDura' value={credentials.courseDura} onChange={onChange} required placeholder='Year duration of Course' />
-
-
-                <label htmlFor='sem'>Total Semester:-</label>
-                <input type="number" name='sem' id='sem' value={credentials.sem} onChange={onChange} required placeholder='No. of semester' />
-
-                <input type='submit' name='submit' />
-            </form>
+                    <div className='form-fields'>
+                        <label htmlFor='sem'>Total Semester:-</label>
+                        <input className="form-text" type="number" name='sem' id='sem' value={credentials.sem} onChange={onChange} required placeholder='No. of semester' />
+                    </div>
+                    <input className="form-btn" type='submit' name='submit' />
+                </form>
+            </div>
         </>
     )
 }

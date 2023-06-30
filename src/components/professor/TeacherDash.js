@@ -1,16 +1,33 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import Loginauth from '../loginauth'
+import Nav from '../nav';
 
 function TeacherDash() {
     return (
         <>
             <Loginauth type="teacher" />
+            <Nav type="teacher" />
+
             <div className='card-container'>
-                <div className='option-card'>
-                    <p><Link to="myCourse">My Course</Link></p>
-                    <p><Link to="joinCourse">Join Course</Link></p>
-                </div>
+                <Link className='card' to="myCourse">
+                    <span class="material-symbols-outlined">folder_special</span>
+                    <p>My Course</p>
+                </Link>
+                <Link className='card' to="joinCourse">
+                    <span class="material-symbols-outlined">
+                        drive_file_move
+                    </span>
+                    <p>
+                        Join Course
+                    </p>
+                </Link>
+                <Link className='card' to="joinCourse">
+                    <span class="material-symbols-outlined">
+                        account_box
+                    </span>
+                    <p>My Profile</p>
+                </Link>
             </div>
         </>
     )

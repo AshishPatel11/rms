@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Nav from '../nav'
 import Loginauth from '../loginauth'
 function AddSem() {
     var course = {
@@ -98,26 +99,31 @@ function AddSem() {
     return (
         <>
             <Loginauth type="admin" />
-            <h2>Create Course</h2>
-            <form method="post" onSubmit={handleSubmit}>
-                <label htmlFor='courseName'>Course Name:-</label>
-                <select name="cid" id="courseName" onChange={onChange} value={credentials.cid}>
-                    <option hidden>select course</option>
-                    {courseList}
-                </select>
-
-                <label htmlFor='sem'>Semester Name:-</label>
-                <select name="semName" id="sem" onChange={onChange} value={credentials.semName}>
-                    <option hidden>select sem</option>
-                    {semList}
-                </select>
-
-
-                <label htmlFor='sub'>Total Subjects:-</label>
-                <input type="number" name='sub' id='sub' value={credentials.sub} onChange={onChange} required placeholder='No. of semester' />
-
-                <input type='submit' name='submit' value="create" />
-            </form>
+            <Nav type="admin" />
+            <h2 className='title'>Create Semester</h2>
+            <div className="loginForm">
+                <form method="post" className='form' onSubmit={handleSubmit}>
+                    <div className='form-fields'>
+                        <label htmlFor='courseName'>Course Name:-</label>
+                        <select className="form-text" name="cid" id="courseName" onChange={onChange} value={credentials.cid}>
+                            <option hidden>select course</option>
+                            {courseList}
+                        </select>
+                    </div>
+                    <div className='form-fields'>
+                        <label htmlFor='sem'>Semester Name:-</label>
+                        <select className="form-text" name="semName" id="sem" onChange={onChange} value={credentials.semName}>
+                            <option hidden>select sem</option>
+                            {semList}
+                        </select>
+                    </div>
+                    <div className='form-fields'>
+                        <label htmlFor='sub'>Total Subjects:-</label>
+                        <input className="form-text" type="number" name='sub' id='sub' value={credentials.sub} onChange={onChange} required placeholder='No. of semester' />
+                    </div>
+                    <input type='submit' className='form-btn' name='submit' value="create" />
+                </form>
+            </div>
         </>
     )
 }

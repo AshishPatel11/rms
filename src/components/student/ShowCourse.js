@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Loginauth from '../loginauth';
 import ShowSem from './ShowSem';
+import Nav from '../nav';
 
 const ShowCourse = (props) => {
     const User = JSON.parse(sessionStorage.getItem('user'));
@@ -55,6 +56,8 @@ const ShowCourse = (props) => {
     else {
         return (
             <>
+                <Loginauth type="student" />
+                <Nav type="student" />
                 <h1>No Semester</h1>
             </>
         )
@@ -62,7 +65,8 @@ const ShowCourse = (props) => {
     console.log(semList)
     return (
         <>
-            <Loginauth />
+            <Loginauth type="student" />
+            <Nav type="student" />
             {semList}
             {isRendered.state && <ShowSem sem={isRendered.semName} />}
         </>

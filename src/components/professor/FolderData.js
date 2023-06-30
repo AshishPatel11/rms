@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 import Loginauth from '../loginauth'
+import Nav from '../nav'
 function FolderData() {
     let { state } = useLocation()
     const [files, setFiles] = useState([])
@@ -14,7 +15,7 @@ function FolderData() {
             body: formData
         });
         const json = await response.json()
-        console.log(json)
+        // console.log(json)
         if (json.id) {
             const response2 = await fetch("http://localhost:5000/api/auth/filedata",
                 {
@@ -36,6 +37,10 @@ function FolderData() {
         }
         setRefresh(prevRefresh => !prevRefresh);
     };
+
+
+
+    //files list fetching
     const getfiles = useCallback(async () => {
         try {
             const response = await fetch('http://localhost:5000/api/auth/fetchfiledata', {
@@ -43,7 +48,7 @@ function FolderData() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ subcode: state.subcode }),
+                body: JSON.stringify({ subcode: state.subcode, fid: state.fid }),
             });
             const json = await response.json();
             if (json.error) {
@@ -53,7 +58,7 @@ function FolderData() {
         } catch (error) {
             console.log('Error fetching files:', error);
         }
-    }, [state.subcode])
+    }, [state])
     useEffect(() => {
         async function getCoursesAsync() {
             try {
@@ -65,8 +70,11 @@ function FolderData() {
         }
         getCoursesAsync();
     }, [getfiles]);
+
+
+
     let folderList;
-    console.log(files)
+    // console.log(files)
     if (files[0]) {
         folderList = files.map((item, index) => (
             <p key={index}>
@@ -79,6 +87,7 @@ function FolderData() {
     return (
         <>
             <Loginauth type="teacher" />
+            <Nav type="teacher" />
             <h2>Create Course</h2>
             <form method="post" onSubmit={handleSubmit}>
                 <label htmlFor='file'>Choose File:-</label>

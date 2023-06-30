@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Loginauth from './loginauth';
+import Nav from './nav';
 const Home = (props) => {
     const [credentials, setCredentials] = useState({ OTP: "" })
     let navigate = useNavigate();
@@ -39,10 +40,11 @@ const Home = (props) => {
     return (
         <>
             <Loginauth />
+            <Nav type="default" />
             <div className="loginForm">
                 <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="input-fields">
-                        <span className="material-symbols-outlined">account_circle</span>
+                        <span className="material-symbols-outlined">lock</span>
                         <input type="number" className="form-text" name='OTP' id='OTP' value={credentials.OTP} onChange={onChange} placeholder="Enter OTP" />
                     </div>
                     <input type="submit" className="form-btn" value="Verify" />

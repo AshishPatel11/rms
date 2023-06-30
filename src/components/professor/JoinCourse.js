@@ -71,8 +71,8 @@ function JoinCourse() {
     }
     return (
         <>
-            <Loginauth />
-            <Nav type="student" />
+            <Loginauth type="teacher" />
+            <Nav type="teacher" />
             <div className="loginForm" >
                 <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="form-fields">
