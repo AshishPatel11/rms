@@ -9,7 +9,11 @@ function MyCourse() {
             <>
                 <Loginauth type="teacher" />
                 <Nav type="teacher" />
-                <p><Link to="showCourse">{User.cid}</Link></p>
+                <div>
+                    <Link to="showCourse" className='folder-card'><span className="material-symbols-outlined">
+                        folder_special
+                    </span><p>{User.cid}</p></Link>
+                </div>
             </>
         )
     }
@@ -18,7 +22,7 @@ function MyCourse() {
             <>
                 <Loginauth type="teacher" />
                 <Nav type="teacher" />
-                <h1>
+                <h1 className='title'>
                     You havn't Join any Courses
                 </h1>
             </>

@@ -41,13 +41,16 @@ function AddFolder() {
         <>
             <Loginauth type="teacher" />
             <Nav type="teacher" />
-            <h2>Create Course</h2>
-            <form method="post" onSubmit={handleSubmit}>
-                <label htmlFor='folderName'>folder Name:-</label>
-                <input type="text" name='folderName' id='folderName' value={credentials.folderName} onChange={onChange} required placeholder='Name of folder' />
-
-                <input type='submit' name='submit' />
-            </form>
+            <h2 className='title'>Create Folder</h2>
+            <div className="loginForm">
+                <form className='form' method="post" onSubmit={handleSubmit}>
+                    <div className='form-fields'>
+                        <label htmlFor='folderName'>Folder Name:-</label>
+                        <input type="text" className="form-text" name='folderName' id='folderName' value={credentials.folderName} onChange={onChange} required placeholder='Name of folder' />
+                    </div>
+                    <input type='submit' className='form-btn' name='submit' />
+                </form>
+            </div>
         </>
     )
 }

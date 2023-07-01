@@ -10,19 +10,19 @@ function adminDash() {
             <Nav type="admin" />
             <div className='card-container'>
                 <Link className='card' to="addUser">
-                    <span class="material-symbols-outlined">person_add</span>
+                    <span className="material-symbols-outlined">person_add</span>
                     <p>Add User</p>
                 </Link>
 
 
                 <Link className='card' to="AddCourse">
-                    <span class="material-symbols-outlined">assignment_add</span>
+                    <span className="material-symbols-outlined">assignment_add</span>
                     <p>Add Course</p>
                 </Link>
 
 
                 <Link className='card' to="AddSem">
-                    <span class="material-symbols-outlined">post_add</span>
+                    <span className="material-symbols-outlined">post_add</span>
                     <p>Create Semester</p>
                 </Link>
             </div>
@@ -30,17 +30,17 @@ function adminDash() {
 
             <div className='card-container'>
                 <Link className='card' to="AddSub">
-                    <span class="material-symbols-outlined">create_new_folder</span>
+                    <span className="material-symbols-outlined">create_new_folder</span>
                     <p>Create Subjects</p>
                 </Link>
 
 
                 <Link className='card' to="apprReq">
-                    <span class="material-symbols-outlined">check_circle</span>
+                    <span className="material-symbols-outlined">check_circle</span>
                     <p>Pending Approvals</p>
                 </Link>
                 <Link className='card' to="apprReq">
-                    <span class="material-symbols-outlined">edit_note</span>
+                    <span className="material-symbols-outlined">edit_note</span>
                     <p>Update Course</p>
                 </Link>
             </div >

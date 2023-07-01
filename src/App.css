@@ -37,6 +37,7 @@ body {
     font-family: "Montserrat";
     font-size: 16px;
     font-weight: 500;
+    min-width: 100px;
     height: 3rem;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
@@ -103,6 +104,7 @@ body {
 
 .form-fields {
     margin: 10px 0px;
+    color: snow;
 }
 
 option {
@@ -126,4 +128,72 @@ option {
     padding: 6px 18px;
     color: black;
     border-radius: 12px;
+}
+
+.folder-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 20px;
+    text-decoration: none;
+    color: snow;
+    width: 220px;
+    margin: 18px;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.folder-card:hover {
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10), 0 0 14px 3px rgba(255, 255, 255, 0.08);
+}
+
+.folder-card:active {
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10);
+}
+
+.folder-container {
+    display: flex;
+    align-items: center;
+}
+
+.capital {
+    text-transform: uppercase;
+}
+
+.title {
+    color: #d9d9d9;
+    text-decoration: none;
+    margin: 10px;
+}
+
+.subCard-container {
+    margin: 0px 18px;
+}
+
+.file-icon {
+    font-size: 36px;
+}
+
+.file-node {
+    display: inline-flex;
+    align-items: center;
+    max-width: 100%;
+    text-decoration: none;
+    color: snow;
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    margin: 4px 0px;
+}
+
+.filelist {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.file-node * {
+    margin: 0px 12px;
 }

@@ -31,6 +31,9 @@ function FolderData() {
                     })
                 });
             const filedata = await response2.json();
+            if (filedata.error) {
+                alert(filedata.error)
+            }
             if (filedata.fileid) {
                 alert("file uploaded successfully")
             }
@@ -77,24 +80,29 @@ function FolderData() {
     // console.log(files)
     if (files[0]) {
         folderList = files.map((item, index) => (
-            <p key={index}>
-                <Link to="download" state={item}>
-                    {item.fileName}
-                </Link>
-            </p >
+            <Link className='file-node' key={index} to="download" state={item}>
+                <span className="material-symbols-outlined file-icon">
+                    news
+                </span>
+                <p>{item.fileName}</p>
+            </Link>
+
         ));
     }
     return (
         <>
             <Loginauth type="teacher" />
             <Nav type="teacher" />
-            <h2>Create Course</h2>
+            <h1 className='title'>Upload Files</h1>
             <form method="post" onSubmit={handleSubmit}>
-                <label htmlFor='file'>Choose File:-</label>
-                <input type="file" name='file' id='file' required />
-                <input type='submit' name='submit' />
+                <div className='form-fields'>
+                    <label htmlFor='file'>Choose File:-</label>
+                    <input type="file" name='file' id='file' required />
+                    <input type='submit' className='form-btn' name='submit' />
+                </div>
             </form>
-            <div>{folderList}</div>
+            <h1 className='title'>Uploaded Files</h1>
+            <div className='filelist'>{folderList}</div>
 
         </>
     )

@@ -11,11 +11,11 @@ function TeacherDash() {
 
             <div className='card-container'>
                 <Link className='card' to="myCourse">
-                    <span class="material-symbols-outlined">folder_special</span>
+                    <span className="material-symbols-outlined">folder_special</span>
                     <p>My Course</p>
                 </Link>
                 <Link className='card' to="joinCourse">
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         drive_file_move
                     </span>
                     <p>
@@ -23,7 +23,7 @@ function TeacherDash() {
                     </p>
                 </Link>
                 <Link className='card' to="joinCourse">
-                    <span class="material-symbols-outlined">
+                    <span className="material-symbols-outlined">
                         account_box
                     </span>
                     <p>My Profile</p>

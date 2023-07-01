@@ -46,14 +46,17 @@ const ShowCourse = (props) => {
     if (Mysemarray && Mysemarray.error) {
         return (
             <>
-                <h1>there are no semester created by admin yet</h1>
+                <h1 className='title'>there are no semester created by admin yet</h1>
             </>
         )
     }
     let semList;
 
     semList = Mysemarray.map((item, index) => (
-        <p key={index} onClick={showsemdetail} id={item.semName}>
+        <p className='folder-card' key={index} onClick={showsemdetail} id={item.semName}>
+            <span className="material-symbols-outlined" id={item.semName}>
+                topic
+            </span>
             {item.semName}
         </p>
     ));
@@ -61,7 +64,9 @@ const ShowCourse = (props) => {
         <>
             <Loginauth type="teacher" />
             <Nav type="teacher" />
-            {semList}
+            <div className='folder-container'>
+                {semList}
+            </div>
             {isRendered.state && <ShowSem sem={isRendered.semName} />}
         </>
     )

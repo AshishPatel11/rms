@@ -4,8 +4,15 @@ const Filesdata = require('../models/Filesdata');
 
 router.post('/filedata', async (req, res) => {
     try {
-
-        let fileData = await Filesdata.create({
+        let fileData = await Filesdata.findOne({
+            fileName: req.body.fileName,
+            subcode: req.body.subcode,
+            fid: req.body.fid
+        });
+        if (fileData) {
+            return res.status(400).json({ error: "Sorry this file already exist !!" })
+        }
+        fileData = await Filesdata.create({
             fileid: req.body.fileid,
             fileName: req.body.fileName,
             subcode: req.body.subcode,

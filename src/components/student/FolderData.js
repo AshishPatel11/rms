@@ -70,18 +70,21 @@ function FolderData() {
     console.log(files)
     if (files[0]) {
         folderList = files.map((item, index) => (
-            <p key={index}>
-                <Link to="download" state={item}>
-                    {item.fileName}
-                </Link>
-            </p >
+            <Link className='file-node' key={index} to="download" state={item}>
+                <span className="material-symbols-outlined file-icon">
+                    news
+                </span>
+                <p>{item.fileName}</p>
+            </Link>
+
         ));
     }
     return (
         <>
             <Loginauth type="student" />
             <Nav type="student" />
-            <div>{folderList}</div>
+            <h1 className='title'>Files</h1>
+            <div className='filelist'>{folderList}</div>
 
         </>
     )

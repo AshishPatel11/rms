@@ -40,26 +40,36 @@ function ShowSubs() {
             <>
                 <Loginauth type="teacher" />
                 <Nav type="teacher" />
-                <Link to="AddFolder" state={state}>Create Folder</Link>
-                <h1>Folders are not created yet</h1>
+                <Link className='folder-card' to="AddFolder" state={state}><span className="material-symbols-outlined">
+                    create_new_folder
+                </span><p>Create Folder</p></Link>
+                <h1 className='title'>Folders are not created yet</h1>
             </>
         )
     }
     if (Myfolder[0]) {
         folderList = Myfolder.map((item, index) => (
-            <p key={index}>
-                <Link to="folderData" state={item}>
+            <Link key={index} className='folder-card' to="folderData" state={item}>
+                <span className="material-symbols-outlined" id={item.semName}>
+                    folder
+                </span>
+                <p>
                     {item.folderName}
-                </Link>
-            </p >
+                </p>
+            </Link>
         ));
     }
     return (
         <>
             <Loginauth type="teacher" />
             <Nav type="teacher" />
-            <Link to="AddFolder" state={state}>Create Folder</Link>
-            {folderList}
+            <Link className='folder-card' to="AddFolder" state={state}><span className="material-symbols-outlined">
+                create_new_folder
+            </span><p>Create Folder</p></Link>
+            <h1 className='title'>Folders</h1>
+            <div className='subCard-container'>
+                {folderList}
+            </div>
         </>
     )
 }

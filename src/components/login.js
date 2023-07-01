@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
+import Lottie from 'lottie-react'
+import animationData from '../images/97952-loading-animation-blue.json'
 import { useNavigate } from 'react-router-dom'
 import Nav from './nav'
 
 const Login = (props) => {
     const [credentials, setCredentials] = useState({ email: "" })
+    const [loading, setLoading] = useState(false)
     let history = useNavigate();
 
     const handleSubmit = async (e) => {
         console.log("done")
         e.preventDefault();
+        setLoading(true)
         const response = await fetch("http://localhost:5000/api/auth/login", {
             method: 'POST',
             headers: {
@@ -26,10 +30,22 @@ const Login = (props) => {
         else {
             alert(json.error);
         }
+        setLoading(false)
     }
 
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
+    }
+    const style = {
+        height: "92vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        backdropFilter: " blur(2px)",
+        fontSize: "100px"
+    }
+    const style2 = {
+        height: "40vh",
     }
     return (
         <>
@@ -42,7 +58,10 @@ const Login = (props) => {
                     </div>
                     <input type="submit" className="form-btn" value="Verify" />
                 </form>
-            </div>
+            </div >
+
+            {loading && <div style={style}> <Lottie style={style2} animationData={animationData}></Lottie></div>}
+
         </>
     )
 }

@@ -38,24 +38,30 @@ function ShowSem(props) {
     if (Subjects && Subjects.error) {
         return (
             <>
-                <Nav type="teacher" />
-                <h1>there are no subjects created by admin yet</h1>
+                {/* <Nav type="teacher" /> */}
+                <h1 className='title'>There are no subjects created by admin yet</h1>
             </>
         )
     }
     let subList;
 
     subList = Subjects.map((item, index) => (
-        <p key={index}>
-            <Link to="subjects" state={{ subName: item.subName, subcode: item.subcode }}>{item.subName}</Link>
-        </p>
+        <Link to="subjects" className='folder-card' key={index} state={{ subName: item.subName, subcode: item.subcode }}>
+            <span className="material-symbols-outlined" id={item.semName}>
+                folder
+            </span>
+            {item.subName}
+        </Link>
+
     ));
     return (
         <>
             <Loginauth type="teacher" />
-            <Nav type="teacher" />
-            <h1>{props.sem}</h1>
-            {subList}
+            {/* <Nav type="teacher" /> */}
+            <h1 className='title capital'>{props.sem}</h1>
+            <div className='subCard-container'>
+                {subList}
+            </div>
         </>
     )
 }

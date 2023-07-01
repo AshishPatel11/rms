@@ -19,7 +19,6 @@ const ShowCourse = (props) => {
             const json = await response.json();
             if (json.error) {
                 alert(json.error);
-                return;
             }
             return json;
         } catch (error) {
@@ -37,7 +36,6 @@ const ShowCourse = (props) => {
             try {
                 const json = await getCourses();
                 setMysemarray(json)
-                console.log(json)
             } catch (error) {
                 console.error(error);
             }
@@ -45,29 +43,30 @@ const ShowCourse = (props) => {
         getCoursesAsync();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    let semList;
-    if (Mysemarray) {
-        semList = Mysemarray.map((item, index) => (
-            <p key={index} onClick={showsemdetail} id={item.semName}>
-                {item.semName}
-            </p>
-        ));
-    }
-    else {
+    if (Mysemarray && Mysemarray.error) {
         return (
             <>
-                <Loginauth type="student" />
-                <Nav type="student" />
-                <h1>No Semester</h1>
+                <h1 className='title'>there are no semester created by admin yet</h1>
             </>
         )
     }
-    console.log(semList)
+    let semList;
+
+    semList = Mysemarray.map((item, index) => (
+        <p className='folder-card' key={index} onClick={showsemdetail} id={item.semName}>
+            <span className="material-symbols-outlined" id={item.semName}>
+                topic
+            </span>
+            {item.semName}
+        </p>
+    ));
     return (
         <>
             <Loginauth type="student" />
             <Nav type="student" />
-            {semList}
+            <div className='folder-container'>
+                {semList}
+            </div>
             {isRendered.state && <ShowSem sem={isRendered.semName} />}
         </>
     )
