@@ -66,7 +66,7 @@ function ShowSubs() {
             <Link className='folder-card' to="AddFolder" state={state}><span className="material-symbols-outlined">
                 create_new_folder
             </span><p>Create Folder</p></Link>
-            <h1 className='title'>Folders</h1>
+            <h1 className='title'>Folders of {state.subName}</h1>
             <div className='subCard-container'>
                 {folderList}
             </div>

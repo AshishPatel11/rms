@@ -35,16 +35,16 @@ router.post('/login', async (req, res) => {
                     pass: 'elxzerajexrjvreb',
                 },
             });
-            const loginOTP = await generateOTP();      
+            const loginOTP = await generateOTP();
             let info = await transporter.sendMail({
                 from: '"Ashish Patel" <ashishpatel287680@gmail.com>', // sender address
                 to: user.email, // list of receivers
-                subject: "Hello dixit", // Subject line
+                subject: "Login OTP for Resource Management System", // Subject line
                 text: `Your OTP for login is ${loginOTP}`, // plain text body
                 html: `<b>Your OTP for login is ${loginOTP}</b>`, // html body
             })
             console.log("Message sent: %s", info.messageId);
-            res.send([user,loginOTP]);
+            res.send([user, loginOTP]);
         }
     } catch (error) {
         console.log(error)
