@@ -197,3 +197,6 @@ option {
 .file-node * {
     margin: 0px 12px;
 }
+.disable{
+    cursor: not-allowed ;
+}

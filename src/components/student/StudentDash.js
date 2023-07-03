@@ -21,7 +21,7 @@ function StudentDash() {
                         Join Course
                     </p>
                 </Link>
-                <Link className='card' to="joinCourse">
+                <Link className='card' to="updateProfile">
                     <span className="material-symbols-outlined">
                         account_box
                     </span>

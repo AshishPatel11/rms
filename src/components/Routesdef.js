@@ -29,6 +29,7 @@ import ShowSubsSt from '../components/student/ShowSubs.js'
 import FolderDataSt from '../components/student/FolderData.js'
 import Logout from './Logout.js'
 import DownloadFileSt from './student/DownloadFile.js'
+import UpdateProfile from './updateProfile.js'
 // import Nav from './nav.js'
 function Routesdef(props) {
     return (
@@ -38,12 +39,14 @@ function Routesdef(props) {
                 <Route index element={<Login />} />
                 <Route path="home" element={<Home />} />
                 <Route path="home/adminDash" element={<AdminDash />} />
+                <Route path="home/adminDash/updateProfile" element={<UpdateProfile />} />
                 <Route path="home/adminDash/addUser" element={<AddUser />} />
                 <Route path="home/adminDash/apprReq" element={<ApprReq />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
                 <Route path="home/adminDash/AddSem" Component={AddSem} />
                 <Route path="home/adminDash/AddSub" Component={AddSub} />
                 <Route path="home/studentDash" element={<StudentDash />} />
+                <Route path="home/studentDash/updateProfile" element={<UpdateProfile />} />
                 <Route path="home/studentDash/myCourse" element={<MyCourse />} />
                 <Route path="home/studentDash/joinCourse" element={<JoinCourse />} />
                 <Route path="home/studentDash/myCourse/showCourse" element={<ShowCourse />} />
@@ -55,6 +58,7 @@ function Routesdef(props) {
                 <Route path="home/teacherDash/myCourse/showCourse/subjects/folderData" element={<FolderData />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects/folderData/download" element={<DownloadFile />} />
                 <Route path="home/teacherDash/myCourse/showCourse/subjects/AddFolder" element={<AddFolder />} />
+                <Route path="home/teacherDash/updateProfile" element={<UpdateProfile />} />
                 <Route path="home/teacherDash" element={<TeacherDash />} />
                 <Route path="home/teacherDash/myCourse" element={<MyCourseTe />} />
                 <Route path="home/teacherDash/joinCourse" element={<JoinCourseTe />} />

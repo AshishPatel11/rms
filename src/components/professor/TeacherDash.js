@@ -4,6 +4,7 @@ import Loginauth from '../loginauth'
 import Nav from '../nav';
 
 function TeacherDash() {
+    
     return (
         <>
             <Loginauth type="teacher" />
@@ -22,7 +23,7 @@ function TeacherDash() {
                         Join Course
                     </p>
                 </Link>
-                <Link className='card' to="joinCourse">
+                <Link className='card' state={{ type: "teacher" }} to="updateProfile">
                     <span className="material-symbols-outlined">
                         account_box
                     </span>
