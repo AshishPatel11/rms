@@ -48,7 +48,7 @@ function AddFolder() {
                         <label htmlFor='folderName'>Folder Name:-</label>
                         <input type="text" className="form-text" name='folderName' id='folderName' value={credentials.folderName} onChange={onChange} required placeholder='Name of folder' />
                     </div>
-                    <input type='submit' className='form-btn' name='submit' />
+                    <input type='submit' className='form-btn' name='submit' value="create" />
                 </form>
             </div>
         </>

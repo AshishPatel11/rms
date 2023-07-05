@@ -32,6 +32,38 @@ router.post('/adduser', [
     }
 })
 
+
+
+//Delete User show user list
+router.post('/fetchuser', async (req, res) => {
+    try {
+        // Check whether the user with this email exists already
+        let user = await User.find();
+        if(!user){
+            res.json({error:"User not found"})
+        }
+        res.json(user)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
+
+
+router.post('/deluser', async (req, res) => {
+    try {
+        let user = await User.deleteOne({uid:req.body.uid});
+        if(user===0){
+            res.json({error:"User not deleted"})
+        }
+        res.json({msg:"user deleted"})
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
+
 //update user profile
 router.post('/updateUser', [
     body('userName', 'Enter a valid name').isLength({ min: 3 }),

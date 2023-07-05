@@ -30,6 +30,8 @@ import FolderDataSt from '../components/student/FolderData.js'
 import Logout from './Logout.js'
 import DownloadFileSt from './student/DownloadFile.js'
 import UpdateProfile from './updateProfile.js'
+import MngUser from '../components/admin/mngUser.js'
+import DelUSer from './admin/DelUSer.js';
 // import Nav from './nav.js'
 function Routesdef(props) {
     return (
@@ -40,7 +42,9 @@ function Routesdef(props) {
                 <Route path="home" element={<Home />} />
                 <Route path="home/adminDash" element={<AdminDash />} />
                 <Route path="home/adminDash/updateProfile" element={<UpdateProfile />} />
-                <Route path="home/adminDash/addUser" element={<AddUser />} />
+                <Route path="home/adminDash/mngUser/addUser" element={<AddUser />} />
+                <Route path="home/adminDash/mngUser/delUser" element={<DelUSer />} />
+                <Route path="home/adminDash/mngUser" element={<MngUser />} />
                 <Route path="home/adminDash/apprReq" element={<ApprReq />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
                 <Route path="home/adminDash/AddSem" Component={AddSem} />

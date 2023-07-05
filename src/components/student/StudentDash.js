@@ -21,7 +21,7 @@ function StudentDash() {
                         Join Course
                     </p>
                 </Link>
-                <Link className='card' to="updateProfile">
+                <Link className='card' state={{type:"student"}} to="updateProfile">
                     <span className="material-symbols-outlined">
                         account_box
                     </span>

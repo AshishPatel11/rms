@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import Loginauth from './loginauth'
 import Nav from './nav'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 function UpdateProfile() {
     const session = JSON.parse(sessionStorage.getItem("user"))
     const { state } = useLocation()
+    let navigate = useNavigate();
     const [credentials, setCredentials] = useState(session)
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -22,7 +23,8 @@ function UpdateProfile() {
         });
         const json = await response.json()
         if (json.userName) {
-            alert("update successfully")
+            alert("update successfully login again!!")
+            navigate("/logout", { replace: true })
         }
         else if (json.error) {
             alert(json.error)
@@ -58,7 +60,7 @@ function UpdateProfile() {
                         <label htmlFor='type' >User Role:-</label>
                         <input type="text" className="form-text disable" name='type' value={credentials.type} disabled id='type' required placeholder="Enter user type" />
                     </div>
-                    <input type="submit" className="form-btn" value="Create" />
+                    <input type="submit" className="form-btn" value="update" />
                 </form>
             </div>
         </>

@@ -98,7 +98,7 @@ function FolderData() {
                 <div className='form-fields'>
                     <label htmlFor='file'>Choose File:-</label>
                     <input type="file" name='file' id='file' required />
-                    <input type='submit' className='form-btn' name='submit' />
+                    <input type='submit' className='form-btn' name='submit' value="Upload"/>
                 </div>
             </form>
             <h1 className='title'>Uploaded Files {state.fid}</h1>

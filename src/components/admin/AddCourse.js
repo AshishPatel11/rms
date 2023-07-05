@@ -24,7 +24,7 @@ function AddCourse() {
         });
         const json = await response.json()
         if (json.courseName) {
-            alert("registration success")
+            alert("course creation successful")
         }
         else if (json.error) {
             alert(json.error)
@@ -57,7 +57,7 @@ function AddCourse() {
                         <label htmlFor='sem'>Total Semester:-</label>
                         <input className="form-text" type="number" name='sem' id='sem' value={credentials.sem} onChange={onChange} required placeholder='No. of semester' />
                     </div>
-                    <input className="form-btn" type='submit' name='submit' />
+                    <input className="form-btn" type='submit' name='submit' value="create" />
                 </form>
             </div>
         </>

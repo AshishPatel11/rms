@@ -110,7 +110,9 @@ body {
 option {
     color: black;
 }
-
+.white{
+    color: snow;
+}
 .formlist {
     color: snow;
 }
@@ -199,4 +201,7 @@ option {
 }
 .disable{
     cursor: not-allowed ;
+}
+.deleteform{
+    margin: 10px 0px;
 }

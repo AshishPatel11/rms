@@ -60,10 +60,23 @@ const AddUser = (props) => {
                         <label htmlFor='email' >Email ID:-</label>
                         <input type="text" className="form-text" name='email' value={credentials.email} id='email' onChange={onChange} required placeholder="Enter email" />
                     </div>
-                    <div className="form-fields reg">
+                    {/* <div className="form-fields reg">
                         <label htmlFor='type' >User Role:-</label>
                         <input type="text" className="form-text" name='type' value={credentials.type} id='type' onChange={onChange} required placeholder="Enter user type" />
+                    </div> */}
+
+
+                    <div className='form-fields reg'>
+                        <label htmlFor='type' >User Role:-</label>
+                        <select className="form-text" name="type" id="type" required onChange={onChange} value={credentials.type}>
+                            <option hidden>select Role</option>
+                            {/* {semList} */}
+                            <option value="admin">admin</option>
+                            <option value="teacher">teacher</option>
+                            <option value="student">student</option>
+                        </select>
                     </div>
+
                     <input type="submit" className="form-btn" value="Create" />
                 </form>
             </div>

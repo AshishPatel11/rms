@@ -9,9 +9,9 @@ function adminDash() {
             <Loginauth type="admin" />
             <Nav type="admin" />
             <div className='card-container'>
-                <Link className='card' to="addUser">
+                <Link className='card' to="mngUser">
                     <span className="material-symbols-outlined">person_add</span>
-                    <p>Add User</p>
+                    <p>Manage User</p>
                 </Link>
 
 
@@ -41,7 +41,7 @@ function adminDash() {
                 </Link>
                 <Link className='card' to="apprReq">
                     <span className="material-symbols-outlined">edit_note</span>
-                    <p>Update Course</p>
+                    <p>Manage Course</p>
                 </Link>
             </div >
         </>
