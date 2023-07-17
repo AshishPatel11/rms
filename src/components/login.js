@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Lottie from 'lottie-react'
-import animationData from '../images/97952-loading-animation-blue.json'
+import animationData from '../images/animation_lk6ibk4d.json'
 import { useNavigate } from 'react-router-dom'
 import Nav from './nav'
 
@@ -47,7 +47,7 @@ const Login = (props) => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backdropFilter: " blur(2px)",
+        backdropFilter: " blur(1px)",
         fontSize: "100px"
     }
     const style2 = {
@@ -57,6 +57,7 @@ const Login = (props) => {
         <>
             <Nav type="default" />
             <div className="loginForm">
+                <h1 className='title center'>Login</h1>
                 <form className="form" method="post" onSubmit={handleSubmit}>
                     <div className="input-fields">
                         <span className="material-symbols-outlined">account_circle</span>

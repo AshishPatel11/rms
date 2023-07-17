@@ -101,7 +101,7 @@ function FolderData() {
                     <input type='submit' className='form-btn' name='submit' value="Upload"/>
                 </div>
             </form>
-            <h1 className='title'>Uploaded Files {state.fid}</h1>
+            <h1 className='title'>Uploaded Files in {state.fid.split("-")[0]}</h1>
             <div className='filelist'>{folderList}</div>
 
         </>

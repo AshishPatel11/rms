@@ -83,7 +83,7 @@ function FolderData() {
         <>
             <Loginauth type="student" />
             <Nav type="student" />
-            <h1 className='title'>Files</h1>
+            <h1 className='title'>Files in {state.fid.split("-")[0]}</h1>
             <div className='filelist'>{folderList}</div>
 
         </>

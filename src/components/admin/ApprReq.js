@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from '../nav'
 import Loginauth from '../loginauth'
 function JoinCourse() {
+    const [approvals, setapprData] = useState([])
+
     const getAppr = async (e) => {
         // e.preventDefault();
         const response = await fetch("http://localhost:5000/api/auth/fetchJoiReq", {
@@ -15,10 +17,20 @@ function JoinCourse() {
         if (json.msg) {
             alert(json.msg)
         }
-        sessionStorage.setItem('approvals', JSON.stringify(json));
+        return json;
     }
-    getAppr();
-    const approvals = JSON.parse(sessionStorage.getItem("approvals"));
+    useEffect(() => {
+        async function getuserAsync() {
+            try {
+                const json = await getAppr();
+                setapprData(json)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        getuserAsync();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     let pendingAppr = []
     if (approvals) {
         for (let i = 0; i < approvals.length; i++) {

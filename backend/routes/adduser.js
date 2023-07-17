@@ -38,9 +38,9 @@ router.post('/adduser', [
 router.post('/fetchuser', async (req, res) => {
     try {
         // Check whether the user with this email exists already
-        let user = await User.find();
-        if(!user){
-            res.json({error:"User not found"})
+        let user = await User.find().sort('type');
+        if (!user) {
+            res.json({ error: "User not found" })
         }
         res.json(user)
     } catch (error) {
@@ -53,11 +53,11 @@ router.post('/fetchuser', async (req, res) => {
 
 router.post('/deluser', async (req, res) => {
     try {
-        let user = await User.deleteOne({uid:req.body.uid});
-        if(user===0){
-            res.json({error:"User not deleted"})
+        let user = await User.deleteOne({ uid: req.body.uid });
+        if (user === 0) {
+            res.json({ error: "User not deleted" })
         }
-        res.json({msg:"user deleted"})
+        res.json({ msg: "user deleted" })
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Internal Server Error");

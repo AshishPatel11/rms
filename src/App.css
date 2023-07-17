@@ -9,8 +9,9 @@
 
 body {
     /* background-image: url("./images/brick-5066288.jpg"); */
-    background-image: url("./images/webBg.jpg");
+    background-image: url("./images/bg.jpg");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .navBar {
@@ -93,7 +94,7 @@ body {
     border: 2px solid #509fa9;
     border-radius: 8px;
     background-color: transparent;
-    color: snow;
+    color: rgb(17, 17, 17);
     outline: none;
 }
 
@@ -104,17 +105,19 @@ body {
 
 .form-fields {
     margin: 10px 0px;
-    color: snow;
+    color: rgb(18, 18, 18);
 }
 
 option {
     color: black;
 }
-.white{
-    color: snow;
+
+.white {
+    color: rgb(17, 17, 17);
 }
+
 .formlist {
-    color: snow;
+    color: rgb(17, 17, 17);
 }
 
 /* CSS */
@@ -138,22 +141,23 @@ option {
     justify-content: space-around;
     padding: 8px 20px;
     text-decoration: none;
-    color: snow;
+    border: 2px solid rgba(0, 0, 0, 0.236);
+    color: rgb(17, 17, 17);
     width: 220px;
     margin: 18px;
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(5px);
+    box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.058);
+    backdrop-filter: blur(0px);
     border-radius: 12px;
     text-transform: uppercase;
     cursor: pointer;
 }
 
 .folder-card:hover {
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10), 0 0 14px 3px rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.1), 0 0 14px 3px rgba(0, 0, 0, 0.08);
 }
 
 .folder-card:active {
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.10);
+    box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.1);
 }
 
 .folder-container {
@@ -166,7 +170,7 @@ option {
 }
 
 .title {
-    color: #d9d9d9;
+    color: rgb(72, 72, 72);
     text-decoration: none;
     margin: 10px;
 }
@@ -184,8 +188,8 @@ option {
     align-items: center;
     max-width: 100%;
     text-decoration: none;
-    color: snow;
-    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.08);
+    color: rgb(17, 17, 17);
+    box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.08);
     backdrop-filter: blur(4px);
     border-radius: 12px;
     margin: 4px 0px;
@@ -199,9 +203,57 @@ option {
 .file-node * {
     margin: 0px 12px;
 }
-.disable{
-    cursor: not-allowed ;
+
+.disable {
+    cursor: not-allowed;
 }
-.deleteform{
-    margin: 10px 0px;
+
+
+.center {
+    text-align: center;
+}
+
+.table-form {
+    border-collapse: collapse;
+    /* margin: 10px 20px; */
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 2px 5px;
+}
+
+td input,
+th input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: auto;
+}
+
+/* thead {
+    width: 100%;
+} */
+
+th input {
+    color: black;
+}
+.welcome{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(235, 235, 235);
+    box-shadow: 2px 0px 20px black;
+}
+.vh100{
+    height: 100vh;
+}
+.welcome-lottie{
+    height: 50%;
+    width: 50%;
+    display: flex;
+    align-items: end;
+    justify-content: center;
 }
