@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Loginauth from '../loginauth'
 import Nav from '../nav';
 import Lottie from 'lottie-react'
+import { HashLink } from 'react-router-hash-link';
 import animationData from '../CSS/animation_lk6f6l4g.json'
 function StudentDash() {
     const User = JSON.parse(sessionStorage.getItem("user"));
@@ -11,14 +12,18 @@ function StudentDash() {
             <Loginauth type="student" />
             <Nav type="student" />
             <div className='welcome'>
-                <div>
-                    <h1>welcome {User.userName}</h1>
+                <div className='welcome-text'>
+                    <h1 className='Wel-title'>Welcome {User.userName}</h1>
+                    <p className='cap'>Get all your material on one place</p>
+                    <HashLink smooth to="#dash">
+                        <button className='form-btn'>DashBoard</button>
+                    </HashLink>
                 </div>
                 <div className='welcome-lottie'>
                     <Lottie animationData={animationData}></Lottie>
                 </div>
             </div>
-            <div className='card-container vh100'>
+            <div className='card-container vh100' id="dash">
                 <Link className='card' to="myCourse">
                     <span className="material-symbols-outlined">folder_special</span>
                     <p>My Course</p>

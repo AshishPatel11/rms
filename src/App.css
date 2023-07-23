@@ -214,13 +214,15 @@ option {
 }
 
 .table-form {
-    border-collapse: collapse;
+    /* border-collapse: collapse; */
     /* margin: 10px 20px; */
 }
-
+.table-container{
+    margin: 12px 8px;
+}
 th,
 td {
-    border: 1px solid black;
+    border: 2px solid black;
     padding: 2px 5px;
 }
 
@@ -239,7 +241,8 @@ th input {
 th input {
     color: black;
 }
-.welcome{
+
+.welcome {
     height: 100vh;
     display: flex;
     align-items: center;
@@ -247,13 +250,30 @@ th input {
     background-color: rgb(235, 235, 235);
     box-shadow: 2px 0px 20px black;
 }
-.vh100{
+
+.vh100 {
     height: 100vh;
 }
-.welcome-lottie{
+
+.welcome-lottie {
     height: 50%;
     width: 50%;
     display: flex;
     align-items: end;
     justify-content: center;
+}
+.welcome-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 12px 32px;
+}
+.Wel-title{
+    margin: 8px 0px;
+    font-size: 54px;
+}
+.cap{
+    margin-bottom: 8px;
+    font-size: 24px;
 }

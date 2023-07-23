@@ -116,17 +116,19 @@ function DelUSer() {
     return (
         <>
             <Nav type="admin" />
-            <table className='table-form'>
-                <thead>
-                    <tr>
-                        <th><input type="text" disabled value="User Id" /></th>
-                        <th><input type="text" disabled value="User Name" /></th>
-                        <th><input type="text" disabled value="E-mail" /></th>
-                        <th><input type="text" disabled value="User Role" /></th>
-                    </tr>
-                </thead>
-            </table>
-            {folderList}
+            <div className='table-container'>
+                <table className='table-form'>
+                    <thead>
+                        <tr>
+                            <th><input type="text" disabled value="User Id" /></th>
+                            <th><input type="text" disabled value="User Name" /></th>
+                            <th><input type="text" disabled value="E-mail" /></th>
+                            <th><input type="text" disabled value="User Role" /></th>
+                        </tr>
+                    </thead>
+                </table>
+                {folderList}
+            </div>
         </>
     )
 }

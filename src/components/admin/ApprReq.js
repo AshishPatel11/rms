@@ -90,29 +90,41 @@ function JoinCourse() {
 
     let formList = pendingAppr.map((item, index) => {
         return (<form key={index} method="post" id={index} onSubmit={handleSubmit}>
-            <label htmlFor='uid'>User Id:-</label>
-            <input type="number" name='uid' id={item.uid} value={item.uid} onChange={onChange} disabled required />
+            <table className='table-form'>
+                <tbody>
+                    <tr>
+                        <td><input type="number" name='uid' id={item.uid} value={item.uid} onChange={onChange} disabled required /></td>
 
-            <label htmlFor='userName'>User Name:-</label>
-            <input type="text" name='userName' id={item.userName} value={item.userName} onChange={onChange} disabled required />
+                        <td><input type="text" name='userName' id={item.userName} value={item.userName} onChange={onChange} disabled required /></td>
+
+                        <td><input type="text" name='courseName' id={item.cid} value={item.cid} onChange={onChange} disabled required /></td>
 
 
-            <label htmlFor='courseName'>course Name:-</label>
-            <input type="text" name='courseName' id={item.cid} value={item.cid} onChange={onChange} disabled required />
-
-
-            <button type="submit" className='approve' name='Approve'>Approve</button>
-            <button type="submit" className='reject' name='Reject'>Reject</button>
-        </form>)
+                        <td><button type="submit" className='approve' name='Approve'>Approve</button></td>
+                        <td><button type="submit" className='reject' name='Reject'>Reject</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form >)
     })
     return (
         <>
             <Nav type="admin" />
             <Loginauth type="admin" />
-            <div className='formlist'>
-                {formList}
+            <div className='table-container'>
+                <table className='table-form'>
+                    <thead>
+                        <tr>
+                            <th><input type="text" disabled value="User Id" /></th>
+                            <th><input type="text" disabled value="User Name" /></th>
+                            <th><input type="text" disabled value="E-mail" /></th>
+                        </tr>
+                    </thead>
+                </table>
+                <div className='formlist'>
+                    {formList}
+                </div>
             </div>
-
         </>
     )
 }

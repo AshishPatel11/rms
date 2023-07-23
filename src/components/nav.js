@@ -16,6 +16,9 @@ function Nav(props) {
             <>
                 <div className="navBar">
                     <h1 className="nav-title"><Link to="/home/adminDash" className="nav-title">Resource Management System</Link></h1>
+                    <div className='nav-list'>
+            
+                    </div>
                     <p><Link className="nav-link logout" to="/logout" replace="true">Logout</Link></p>
                 </div>
             </>

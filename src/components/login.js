@@ -21,7 +21,7 @@ const Login = (props) => {
             body: JSON.stringify({ email: credentials.email })
         });
         const json = await response.json()
-        if(json.error){
+        if (json.error) {
             alert(json.error);
             setLoading(false);
         }
@@ -30,7 +30,7 @@ const Login = (props) => {
             sessionStorage.setItem('user', JSON.stringify(json[0]));
             sessionStorage.setItem('OTP', JSON.stringify(json[1]));
             history("/home");
-        setLoading(false)
+            setLoading(false)
 
         }
         else {
