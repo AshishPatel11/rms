@@ -17,6 +17,7 @@ import JoinCourse from '../components/student/JoinCourse.js'
 import MyCourseTe from '../components/professor/MyCourse.js'
 import JoinCourseTe from '../components/professor/JoinCourse.js'
 import ApprReq from '../components/admin/ApprReq.js'
+import MngCourse from '../components/admin/MngCourse.js'
 import ShowCourse from '../components/student/ShowCourse.js'
 import ShowCoursePro from '../components/professor/ShowCourse.js'
 import TeacherDash from '../components/professor/TeacherDash.js'
@@ -46,6 +47,7 @@ function Routesdef(props) {
                 <Route path="home/adminDash/mngUser/delUser" element={<DelUSer />} />
                 <Route path="home/adminDash/mngUser" element={<MngUser />} />
                 <Route path="home/adminDash/apprReq" element={<ApprReq />} />
+                <Route path="home/adminDash/mngcourse" element={<MngCourse />} />
                 <Route path="home/adminDash/AddCourse" Component={AddCourse} />
                 <Route path="home/adminDash/AddSem" Component={AddSem} />
                 <Route path="home/adminDash/AddSub" Component={AddSub} />

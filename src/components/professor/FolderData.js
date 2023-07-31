@@ -6,6 +6,7 @@ function FolderData() {
     let { state } = useLocation()
     const [files, setFiles] = useState([])
     const [refresh, setRefresh] = useState(false);
+    const User = JSON.parse(sessionStorage.getItem("user"));
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -27,7 +28,9 @@ function FolderData() {
                         fileid: json.id,
                         fileName: json.filename,
                         subcode: state.subcode,
-                        fid: state.fid
+                        fid: state.fid,
+                        uid: User.uid,
+                        userName: User.userName
                     })
                 });
             const filedata = await response2.json();
@@ -85,6 +88,7 @@ function FolderData() {
                     news
                 </span>
                 <p>{item.fileName}</p>
+                <p>Uploaded by : {item.userName}</p>
             </Link>
 
         ));
@@ -98,7 +102,7 @@ function FolderData() {
                 <div className='form-fields'>
                     <label htmlFor='file'>Choose File:-</label>
                     <input type="file" name='file' id='file' required />
-                    <input type='submit' className='form-btn' name='submit' value="Upload"/>
+                    <input type='submit' className='form-btn' name='submit' value="Upload" />
                 </div>
             </form>
             <h1 className='title'>Uploaded Files in {state.fid.split("-")[0]}</h1>

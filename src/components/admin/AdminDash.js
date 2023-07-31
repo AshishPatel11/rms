@@ -39,7 +39,7 @@ function adminDash() {
                     <span className="material-symbols-outlined">check_circle</span>
                     <p>Pending Approvals</p>
                 </Link>
-                <Link className='card' to="apprReq">
+                <Link className='card' to="mngcourse">
                     <span className="material-symbols-outlined">edit_note</span>
                     <p>Manage Course</p>
                 </Link>

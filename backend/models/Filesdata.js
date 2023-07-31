@@ -14,6 +14,12 @@ const FiledataSchema = new Schema({
     },
     fid: {
         type: String,
+    },
+    uid: {
+        type: String,
+    },
+    userName: {
+        type: String,
     }
 
 })

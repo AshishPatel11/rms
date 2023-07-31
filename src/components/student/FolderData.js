@@ -75,6 +75,7 @@ function FolderData() {
                     news
                 </span>
                 <p>{item.fileName}</p>
+                <p>Uploaded by : {item.userName}</p>
             </Link>
 
         ));

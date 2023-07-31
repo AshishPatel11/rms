@@ -17,6 +17,8 @@ router.post('/filedata', async (req, res) => {
             fileName: req.body.fileName,
             subcode: req.body.subcode,
             fid: req.body.fid,
+            uid:req.body.uid,
+            userName:req.body.userName
         });
         res.json(fileData)
     } catch (error) {
